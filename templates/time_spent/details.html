@@ -1,0 +1,132 @@
+{% load time_spent_tags %}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<title>Rollover Calendar</title>
+	<link rel="stylesheet" href="/media/styles/calendar.css" type="text/css" media="screen" charset="utf-8">
+</head>
+
+<body>
+
+<table>
+	<tr>
+		<td class="menu">
+			<form action="" method="post" accept-charset="utf-8">
+
+				{% csrf_token %}
+
+				<div class="income-wrap">
+					<div class="monthly-income">Monthly Income</div>
+					$<input type="text" name="income-amount" value="{{ income.amount }}" />
+					
+					<span class="daily-income">Daily ${{ daily_income|floatformat:"2" }}</span>
+					<span class="hourly-income">Hourly ${{ hourly_income|floatformat:"2" }}</span>
+					
+				</div>
+				
+				{% for stock in stock_list %}
+				<div style="background-color:{{ stock.color }}" class="menu-item">
+					<input class="color" type="hidden" name="stock-item-color" value="{{ stock.color }}">
+					<input class="pk" type="hidden" name="stock-item-pk" value="{{ stock.pk }}">
+					<div class="menu-counter">{{ forloop.counter }}</div>
+					<input class="label" type="text" name="stock-item-label" value="{{ stock.label }}">
+					$<input class="cost" type="text" size="7" name="stock-item-amount" value="{{ stock.amount|floatformat:"2" }}">
+					<div>
+						aprox. {{ stock.hours|floatformat:"0" }} hour{{ stock.hours|pluralize }} 
+						<!-- &asymp;{{ stock.days|floatformat:"2" }}days -->
+					</div>
+				</div>
+				{% endfor %}
+
+				<div class="totals">
+					<div class="total-wrap">
+						<div class="label">Total Expense</div>
+						<div class="value">${{ total_expense|floatformat:"2" }}</div>
+					</div>
+					<div class="left-over-wrap">
+						<div class="label">Net Income</div>
+						<div class="value">${{ extra_money|floatformat:"2" }}</div>
+					</div>
+					<div class="extra-days-wrap">
+						<div class="label">Work Days</div>
+						<div class="value">{{ num_work_days|floatformat:"2" }} days</div>
+					</div>
+					<div class="extra-days-wrap">
+						<div class="label">Work Hours</div>
+						<div class="value">{{ num_work_hours|floatformat:"2" }} hrs</div>
+					</div>
+					<div class="extra-days-wrap">
+						<div class="label">Net Hours</div>
+						<div class="value">{{ net_hours|floatformat:"2" }} hrs</div>
+					</div>
+					<div class="extra-days-wrap">
+						<div class="label">Net Days</div>
+						<div class="value">{{ net_days|floatformat:"2" }} days</div>
+					</div>
+				</div>
+
+				<p><input type="submit" value="Update Calendar &rarr;"></p>
+			</form>
+		<td>
+		<td>
+		<div class="month">
+
+		<div class="month-label">
+			<div class="today-link"><a href="{% url time-spent %}">Today</a></div>
+			<div class="month-nav">
+				<a class="prev" href="{{ prev_month_url }}">&larr;</a> 
+				<a class="next" href="{{ next_month_url }}">&rarr;</a>
+			</div>
+			<div class="month-name">{{ month_name }} {{ year_int }}</div>
+
+			<div class="mode-wrap">
+				
+				{% if user %}
+					<span>{{ user }}</span>
+					<a href="{% url auth_logout %}">Sign out</a>
+				{% else %}
+					<span>This is a demo.</span>
+					<a href="javascript:;">Reset demo</a>
+					<a href="{% url registration_register %}">Sign up</a>
+					<a href="{% url auth_login %}">Sign in</a>
+				{% endif %}
+			</div>
+			
+			<div class="clear"></div>
+			<div class="hr"></div>
+		</div>
+
+		<div class="header">
+		{% for day_of_week in days_of_weeks %}
+			<div>{{ day_of_week }}</div>
+		{% endfor %}
+		</div>
+		<div class="clear"></div>
+
+		<div class="weekdays">
+		{% for week in month %}
+			{% for day in week %}
+				{% if day.month = month_int and day.weekday < calendar.SATURDAY %}
+				<div class="day {{ day|today_class }}">
+					<div class="numeral">{{ day.day }}</div>
+					{% draw_stock stock_list month_int month income.amount %}
+				</div>
+				{% else %}
+				<div class="day {{ day|today_class }}">
+					<div class="numeral">{{ day.day }}</div>
+				</div>
+				{% endif %}
+			{% endfor %}
+		{% endfor %}
+		</div>
+		<div class="clear"></div>
+		</div>
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>

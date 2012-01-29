@@ -1,0 +1,10 @@
+local_settings.py
+local_urls.py
+
+deploy/deploy.wsgi
+
+TODO.txt
+
+.*
+
+!.gitignore

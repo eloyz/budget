@@ -1,0 +1,131 @@
+
+
+.month-name {
+	font-size: 1.4em;
+	line-height: .9em;
+	margin-bottom:3px;
+}
+.hr {
+	height: 1px;
+	background-color: #C0C9EB;
+	margin-bottom: 10px;
+}
+table {
+	font-size: 12px;
+	font-family: Verdana;
+	width: 100%;
+	border-collapse: collapse;
+}
+table td {
+	vertical-align: top;
+}
+.menu {
+	width: 200px;
+	border-right: 1px solid #C0C9EB;
+}
+.menu-item {
+	color: white;
+	margin: 1px 0;
+	padding: 5px;
+}
+.menu .label {
+	width: 85px;
+}
+.month {
+	font-size: 12px;
+	font-family: Verdana;
+}
+.month .header div {
+	float: left;
+	width: 14.13%;
+	border: 1px solid white;
+	text-align: center;
+}
+.month .weekdays {
+	border: 1px solid #C0C9EB;
+	border-right: none;
+	border-bottom: none;
+}
+.month .weekdays .today {
+	background-color: #FFE;
+}
+.month .weekdays .today .numeral {
+	background-color: #FFD;
+}
+.month .day .numeral {
+	background-color:#E1E7FF;
+	text-align: right;
+	padding-right: 10px;
+}
+.month .day {
+	width:14.22%;
+	height:120px;
+	float: left;
+	border: 1px solid #C0C9EB;
+	border-left: none;
+	border-top: none;
+	overflow: hidden;
+}
+.day .stock {
+	color: white;
+	text-align: center;
+	padding: 5px;
+}
+.clear {
+	clear: both;
+}
+.today-link {
+	float: left;
+	margin: 0 10px;
+}
+.month-nav {
+	float: left;
+	margin-right: 10px;
+}
+.prev, .next {
+	color: white;
+	font-size: 1em;
+	line-height: 1em;
+	text-decoration: none;
+	background-color: #82A5FF;
+	padding: 0 5px;
+}
+.menu-counter {
+	width: 15px;
+	float: left;
+	text-align: right;
+	margin-top: 6px;
+	margin-right: 3px;
+}
+.mode-wrap {
+	top: 10px;
+	right: 20px;
+	position: absolute;
+}
+.income-wrap {
+	background-color: #e1e6ff;
+	padding: 10px 5px;
+	margin-bottom: 3px;
+	border-bottom: #82a6ff 1px solid;
+}
+.income-wrap input {
+	width: 90%;
+}
+
+.income-wrap .daily-income,
+.income-wrap .hourly-income {
+	color: #4784a3;
+	font-size: .8em;
+}
+.totals {
+	background-color: #e1e6ff;
+	padding: 10px 5px;
+	border-bottom: #82a6ff 1px solid;
+	margin-top: 3px;
+}
+.totals .label {
+	float: left;
+	text-align: right;
+	margin-right: 10px;
+	width: 110px;
+}

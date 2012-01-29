@@ -1,0 +1,371 @@
+/* CSS Document */
+
+
+h2 {
+font-family: Helvetica, Arial, sans-serif;
+font-weight:bold;
+font-size: 1.3em;
+color: #ab313c;
+padding: 0px 0px 0px 0px;
+margin: 0;
+}
+
+h3 {
+font-family: Helvetica, Arial, sans-serif ; font-weight:normal;
+font-size:  1em;
+color: #5b5a2e;
+}
+
+p {
+font-family: Helvetica, Arial, sans-serif;
+font-size: .8em;
+line-height: 20px;
+color: #5b5a2e;
+padding: 0px 0px 0px 0px;
+margin: 0;
+}
+
+a, a:visited {
+font-family: Georgia, "Times New Roman", Times, serif;
+font-style:italic;
+font-size: .9em;
+text-decoration:none;
+color: #ab313c;
+padding: 0px 0px 0px 0px;
+}
+
+a:hover{
+color: #ffffff;
+text-decoration:underline;
+}
+
+a.bookreviewtitle{
+font-family: Helvetica, Arial, sans-serif;
+font-weight:bold;
+font-size: 1.1em;
+color: #ab313c;
+}
+
+a.bookreviewtitle:hover{
+color: #1693AF;
+text-decoration: none;
+}
+
+a.reviewer{
+font-family: Helvetica, Arial, sans-serif;
+font-weight:italic;
+font-size: .9em;
+color: #ab313c;
+}
+
+a.reviewer:hover{
+color: #1693AF;
+text-decoration:none;
+}
+
+
+a.socialmedia{
+font-family: Georgia, "Times New Roman", Times, serif;
+font-style:italic;
+font-size: .9em;
+text-decoration:none;
+color: #ffffff;
+padding: 0px 0px 0px 0px;
+}
+
+a.socialmedia:hover{
+color: #ffffff;
+text-decoration:underline;
+}
+
+img{
+float:left;
+}
+
+#container{
+margin: 0 auto;
+width: 1000px;
+padding: 22px 0px 0px 0px;
+text-align: left; 
+
+}
+#top{
+width: 1000px;
+height: 269px;
+float:left;
+}
+#topleft{
+width: 187px;
+height: 269px;
+float:left;
+}
+#topright{
+width: 813px;
+height: 269px;
+float:left;
+}
+#topright_nav1 a{
+	font-family:Helvetica, Arial, sans-serif;
+	font-style:normal;
+	color:#1693AF;
+
+}
+#topright_nav2{
+background-image:url(/media/images/searchbarbg.jpg);
+background-repeat:repeat-x;
+width: 690px;
+height: 76px;
+float:left;
+margin-left: 60px;
+}
+#topright_banner{
+width: 813px;
+height: 90px;
+float:left;
+}
+#topright_slogan{
+width: 813px;
+height: 86px;
+float:left;
+}
+
+#middle{
+width: 1000px;
+height: 838px;
+padding-bottom:63px;
+
+float:left;
+
+}
+
+#middleleft{
+width: 177px;
+padding-right:10px;
+height: 838px;
+float:left;
+}
+#leftmenu{
+width: 177px;
+float:left;
+background-image:url(/media/images/leftmenubg.jpg);
+background-repeat:repeat-y;
+}
+#leftmenu_top{
+width: 177px;
+height: 91px;
+float:left;
+background-image: url(/media/images/bookcatalogtitlebg.jpg);
+background-repeat: no-repeat;
+}
+#leftmenu_middle{
+width: 177px;
+float:left;
+	
+}
+#leftlinks{
+	font-size: 1em;
+	padding: 0;
+	margin-left: 10px;
+	line-height: 25px;
+	}
+
+#leftmenu_bottom{
+width: 177px;
+height: 70px;
+float:left;
+background-image: url(/media/images/viewbestsellersbg.jpg);
+background-repeat: no-repeat;
+}
+
+#leftmenu a{
+	color:#fff;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-style:italic;
+	
+}
+#leftmenu ul li{
+	list-style: none;
+	font-family:Helvetica, Arial,sans-serif;
+	color:#FFF;
+	
+	}
+#leftmenu ul li li{
+	list-style: circle;
+}
+
+
+#middleright{
+width: 813px;
+
+background-color:#FECD4D;
+float:left;
+
+}
+
+#middleright_topslice{
+width: 813px;
+height: 6px;
+float:left;
+background-image: url(/media/images/topstripright.jpg);
+background-repeat:no-repeat;
+
+}
+#middleright_midcontent{
+width: 813px;
+min-height: 642px;
+padding:0;
+margin: 0;
+float:left;
+
+}
+
+#middleright_midcontent .leftcolumn{
+width: 502px;
+min-height: 642px;
+padding:0;
+margin: 0;
+float:left;
+}
+
+.bookreview{
+width:466px;
+margin: 10px 0px 0px 5px;
+min-height:135px;
+background-color:#FFF;
+border: 1px #E4C05F;
+font-family: Helvetica, Arial, sans-serif;
+font-size: .8em;
+line-height: 20px;
+color: #5b5a2e;
+padding: 5px;
+	}
+	
+.bookreviewtitle{
+text-align: left;
+font-family: Helvetica, Arial, sans-serif;
+font-weight:bold;
+font-size: 1em;
+color: #1693AF;
+padding: 0px 0px 0px 35px;
+}
+
+.bookreview img{
+		padding: 0px 5px 0px 5px;
+	}
+
+.reviewer{
+text-align: right;
+font-family: Georgia, "Times New Roman", Times, serif;
+font-style:italic;
+font-size: .9em;
+color: #ab313c;
+padding: 5px 0px 0px 0px;
+}
+
+#middleright_midcontent .rightcolumn{
+width: 311px;
+
+padding:0;
+margin: 0;
+float:left;
+
+}
+#newstext{
+	width: 291px;
+	padding: 10px;
+}
+#socialmediatext{
+	width: 291px;
+	padding: 0px;
+	
+}
+#socialmediatext a{
+	font-size: 1em;
+	color:#ab313c;
+	}
+#socialmediatext img{
+	float:left;
+	padding-right:10px;
+	
+}
+#middleright_bottomslice{
+width: 813px;
+height: 6px;
+float:left;
+background-image: url(/images/bottomstripright.jpg);
+background-repeat:no-repeat;
+}
+#middlerightbottom{
+width: 813px;
+float:left;
+
+}
+#middlerightbottom .left{
+width: 593px;
+height: 184px;
+float:left;
+
+}
+#middlerightbottom .right{
+width: 220px;
+float:left;
+}
+
+
+
+#footer{
+width: 1000px;
+float:left;
+}
+
+#footer p{
+color: #fff;
+font-family:Helvetica, Arial, sans-serif;
+font-size: .8em;
+}
+
+#footer a{
+color: #fff;
+font-family:Helvetica, Arial, sans-serif;
+font-weight:bold;
+font-size: .8em;
+
+}
+
+
+#footer a:hover{
+color: #CC9933;
+}
+
+#twitter_update_list{
+	list-style-type:none;
+	font-family:Helvetica, Arial, sans-serif;
+	color:#FFF;
+	margin: 0;
+	padding: 2px;
+	font-size: .9em;
+	}
+#twitter_update_list a{
+		text-decoration: underline;
+		color:#fff;
+	}
+	
+#twitter-link a{
+		text-decoration: underline;
+		color:#fff;
+	}
+
+/*Search Bar Top*/
+#searchbar{
+	font-size: 14px;
+	padding: 3px;
+	margin-bottom: 5px;
+	
+}
+#searchbtn{
+clear:none;
+margin-left:0;
+position:relative;
+right:-10px;
+top:11px;
+}

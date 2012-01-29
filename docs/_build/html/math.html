@@ -1,0 +1,124 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Math &mdash; Fudget v0.1 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Fudget v0.1 documentation" href="index.html" />
+    <link rel="prev" title="Welcome to Fudget’s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Fudget’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Fudget v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-settings.py">
+<span id="math"></span><h1>Math<a class="headerlink" href="#module-settings.py" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-apps.registration.models"></span><dl class="class">
+<dt id="apps.registration.models.RegistrationProfile">
+<em class="property">class </em><tt class="descclassname">apps.registration.models.</tt><tt class="descname">RegistrationProfile</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#apps.registration.models.RegistrationProfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>A simple profile which stores an activation key for use during
+user account registration.</p>
+<p>Generally, you will not want to interact directly with instances
+of this model; the provided manager includes methods
+for creating and activating new accounts, as well as for cleaning
+out accounts which have never been activated.</p>
+<p>While it is possible to use this model as the value of the
+<tt class="docutils literal"><span class="pre">AUTH_PROFILE_MODULE</span></tt> setting, it&#8217;s not recommended that you do
+so. This model&#8217;s sole purpose is to store data temporarily during
+account registration and activation, and a mechanism for
+automatically creating an instance of a site-specific profile
+model is provided via the <tt class="docutils literal"><span class="pre">create_inactive_user</span></tt> on
+<tt class="docutils literal"><span class="pre">RegistrationManager</span></tt>.</p>
+</dd></dl>
+
+<p>Hello how are you doing right now.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to Fudget&#8217;s documentation!</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/math.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Fudget’s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">Fudget v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Eloy Zuniga Jr..
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

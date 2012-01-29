@@ -1,0 +1,560 @@
+/* CSS Document */
+
+
+h2 {
+font-family: Helvetica, Arial, sans-serif;
+font-weight:bold;
+font-size: 1.3em;
+color: #ab313c;
+padding: 0px 0px 0px 0px;
+margin: 0;
+}
+
+h3 {
+font-family: Helvetica, Arial, sans-serif ; font-weight:normal;
+font-size:  1em;
+color: #5b5a2e;
+}
+
+p {
+font-family: Helvetica, Arial, sans-serif;
+font-size: .8em;
+line-height: 20px;
+color: #5b5a2e;
+padding: 0px 0px 0px 0px;
+margin: 0;
+}
+
+a, a:visited {
+font-family: Georgia, "Times New Roman", Times, serif;
+font-style:italic;
+font-size: .9em;
+text-decoration:none;
+color: #ab313c;
+padding: 0px 0px 0px 0px;
+}
+
+a:hover{
+color: #ffffff;
+text-decoration:underline;
+}
+
+img{
+float:left;
+}
+
+
+
+
+
+
+
+#container{
+margin: 0 auto;
+width: 1000px;
+padding: 22px 0px 0px 0px;
+text-align: left; 
+
+}
+#top{
+width: 1000px;
+height: 269px;
+float:left;
+}
+#topleft{
+width: 187px;
+height: 269px;
+float:left;
+}
+#topright{
+width: 813px;
+height: 269px;
+float:left;
+}
+#topright_nav1{
+width: 813px;
+height: 24px;
+float:left;
+text-align:right;}
+
+#topright_nav1 a{
+	font-family:Helvetica, Arial, sans-serif;
+	font-style:normal;
+	color:#1693AF;
+
+}
+#topright_nav2{
+background-image:url(../images/searchbarbg.jpg);
+background-repeat:repeat-x;
+width: 690px;
+height: 76px;
+float:left;
+margin-left: 60px;
+}
+#topright_banner{
+width: 813px;
+height: 90px;
+float:left;
+}
+#topright_slogan{
+width: 813px;
+height: 86px;
+float:left;
+}
+
+#middle{
+width: 1000px;
+height: 838px;
+padding-bottom:63px;
+
+float:left;
+
+}
+
+#middleleft{
+width: 177px;
+padding-right:10px;
+height: 838px;
+float:left;
+}
+#leftmenu{
+width: 177px;
+float:left;
+background-image:url(/images/leftmenubg.jpg);
+background-repeat:repeat-y;
+}
+#leftmenu_top{
+width: 177px;
+height: 91px;
+float:left;
+background-image: url(/images/bookcatalogtitlebg.jpg);
+background-repeat: no-repeat;
+}
+#leftmenu_middle{
+width: 177px;
+float:left;
+	
+}
+#leftlinks{
+	font-size: 1em;
+	padding: 0;
+	margin-left: 10px;
+	line-height: 25px;
+	}
+
+#leftmenu_bottom{
+width: 177px;
+height: 70px;
+float:left;
+background-image: url(/images/viewbestsellersbg.jpg);
+background-repeat: no-repeat;
+}
+
+#leftmenu a{
+	color:#fff;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-style:italic;
+	
+}
+#leftmenu ul li{
+	list-style: none;
+	font-family:Helvetica, Arial,sans-serif;
+	color:#FFF;
+	
+	}
+#leftmenu ul li li{
+	list-style: circle;
+}
+
+
+#middleright{
+width: 813px;
+
+background-color:#FECD4D;
+float:left;
+
+}
+#middleright_topstrip{
+width: 813px;
+height: 11px;
+float:left;
+background-image:url(/images/templatetopslice.jpg);
+background-repeat:no-repeat;
+	
+	}
+
+
+#middleright_midcontent{
+background-image: url(/images/templatecontentbg.jpg);
+background-repeat:repeat-y;
+min-height: 600px;
+float:left;
+width: 813px;
+
+	}
+#contentleftcolumn{
+	width: 577px;
+	float:left;
+	}
+#contenttitlebar{
+	width: 542px;
+	padding-left:16px;
+	float:left;
+	}	
+#contenttitlebar h2{
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight:lighter;
+	font-size: 1.5em;
+	color: #999;
+	float:left;
+	padding: 0; margin: 0;
+	}	
+#contenttitlebar h3{
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-weight:lighter;
+	font-size: 1em;
+	color: #999;
+	float:left;
+	padding: 0; margin: 0;
+	}	
+
+
+#bookandrating{
+	width: 542px;
+	padding-left:16px;
+	float:left;
+	}
+#bookandrating .bookarea{
+	width: 157px;
+	float:left;
+	}
+#bookandrating .ratingarea{
+	width: 385px;
+	float:left;
+	}	
+#ratingbox{
+	background-image: url(../images/backgroundrating.jpg);
+	background-repeat:repeat-x;
+	height: 131px;
+}
+#ratingbox h3{
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-size:3em;
+	font-style:italic;
+	color:#FFF;
+	}
+#ratingbox h2{
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-size:1.5em;
+	font-style:italic;
+	color:#FFF;
+	
+}
+#sliderbox{
+	background-image: url(/images/ratingbararea.jpg);
+	background-repeat: no-repeat;
+	height: 46px;
+	margin-top: 10px;
+}
+	
+#synopsis{
+	width: 542px;
+	padding-left:16px;
+	padding-bottom: 20px;
+	float:left;
+	}	
+#reviewarea{
+	width: 542px;
+	padding-left:16px;
+	float:left;
+	}	
+#reviewtabsarea{
+	width: 537px;
+	float:left;
+	}
+#reviewboxesarea{
+	width: 537px;
+	background-color:#FFF;
+	
+	float:left;
+	border:#CCC solid 1px;
+	}	
+#reviewbox{
+	width: 520px;
+	margin: 10px 0px 0px 10px;
+	min-height: 150px;
+	float:left;
+	background-image:url(/images/bgslicereviewbox.jpg);
+	background-repeat:repeat-y;
+	
+}
+#reviewbox_bg{
+	background-image:url(/images/topboxreview.jpg);
+	background-repeat:no-repeat;
+	float:left;
+	width: 520px;
+	
+	min-height: 150px;
+	
+}
+#reviewbox_bottomslice{
+	width: 520px;
+	height: 10px;
+	float:left;
+	background-image:url(/images/bottomreviewboxslice.jpg);
+	background-repeat:no-repeat;
+	
+}
+
+
+#contentrightcolumn{
+	width: 236px;
+	float:left;
+	
+}
+#contentrightcolumn .title h2{
+ font-size: 1.5em;
+ font-family:Georgia, "Times New Roman", Times, serif;
+ font-style:italic;
+ font-weight:bold;
+ color:#ABABAB;
+ padding: 10px;
+ float:left;
+	
+}
+#contentrightcolumn .picture{
+	 color:#ABABAB;
+	
+}
+#contentrightcolumn .picture img{
+	float:left;
+	padding: 10px;
+	
+}
+
+#contentrightcolumn .buttons{
+	width: 130px;
+	height: 26px;
+	padding: 10px;
+	float:left;
+	
+}
+
+#contentrightcolumn .latestreviews{
+	width: 236px;
+	float:left;}
+#contentrightcolumn .latestreviews h2{
+width: 236px;
+font-size: 1.2em;
+ font-family:Georgia, "Times New Roman", Times, serif;
+ font-style:italic;
+ font-weight:bold;
+ color:#ABABAB;
+float:left;
+}
+#contentrightcolumn .latestreviews p{
+	width: 147px;
+}
+#contentrightcolumn .latestreviews img{
+	float:left;
+	padding-right: 5px;
+}
+
+#contentrightcolumn .sponsoredlinks{
+	
+	
+}
+#contentrightcolumn .sponsoredlinks h3{
+	
+	width: 236px;
+font-size: 1em;
+ font-family:Georgia, "Times New Roman", Times, serif;
+ font-style:italic;
+ font-weight:bold;
+ color:#ABABAB;
+float:left;
+}
+
+
+
+
+
+
+#middleright_bottomstrip{
+width: 813px;
+height:11px ;
+float:left;
+background-image:url(/images/templatebottomslice.jpg);
+background-repeat:no-repeat;
+	
+	}
+
+
+
+#middlerightbottom{
+width: 813px;
+float:left;
+
+}
+#middlerightbottom .left{
+width: 593px;
+height: 184px;
+float:left;
+
+}
+#middlerightbottom .right{
+width: 220px;
+float:left;
+
+}
+
+
+
+#footer{
+width: 1000px;
+float:left;
+
+
+}
+
+#footer p{
+color: #fff;
+font-family:Helvetica, Arial, sans-serif;
+font-size: .8em;
+}
+
+#footer a{
+color: #fff;
+font-family:Helvetica, Arial, sans-serif;
+font-weight:bold;
+font-size: .8em;
+
+}
+
+
+#footer a:hover{
+color: #CC9933;
+}
+
+
+
+/*Tabs CSS Content*/
+
+
+.shadetabs{
+padding: 3px 0;
+margin-left: 0;
+margin-top: 1px;
+margin-bottom: 0;
+font: bold 12px Verdana;
+list-style-type: none;
+text-align: left; /*set to left, center, or right to align the menu as desired*/
+}
+
+.shadetabs li{
+display: inline;
+margin: 0;
+width: 140px;
+height: 131px;
+background: white url(/images/tab1.jpg) top left no-repeat;
+}
+
+.shadetabs li a{
+text-decoration: none;
+position: relative;
+z-index: 1;
+padding: 3px 7px;
+margin-right: 3px;
+font-size: 1.2em;
+color: #2d2b2b;
+
+
+}
+
+.shadetabs li a:visited{
+color: #2d2b2b;
+}
+
+.shadetabs li a:hover{
+text-decoration: underline;
+color: #2d2b2b;
+}
+
+.shadetabs li a.selected{ /*selected main tab style */
+position: relative;
+
+}
+
+.shadetabs li a.selected{ /*selected main tab style */
+background-image: url(/images/tab1.jpg);
+
+}
+
+.shadetabs li a.selected:hover{ /*selected main tab style */
+text-decoration: none;
+}
+
+.tabcontent{
+display:none;
+}
+
+@media print {
+.tabcontent {
+display:block !important;
+}
+}
+
+/*User Review: Each Review Post Styles*/
+#userreview{
+	padding: 10px;
+	float:left;
+	width: 455px;
+}
+#userreviewleft{
+	float:left;
+	width: 78px;
+}
+
+#userreviewleft.percent{
+	 font-size: 2em;
+	padding: 15px;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-weight:bold;
+	float:left;
+}
+#userreviewleft img{
+	float:left;
+	width: 65px;
+	padding: 15px 8px 0px 10px;
+}
+#userreviewright{
+	float:left;
+	width: 377px;
+}
+#userreviewright.title{
+	float:left;
+	width: 377px;
+}
+#userreviewright.text{
+	float:left;
+	width: 377px;
+}
+#userreviewright.rating{
+	float:left;
+	width: 377px;
+}
+
+/*Search Bar Top*/
+#searchbar{
+	font-size: 14px;
+	padding: 3px;
+	margin-bottom: 5px;
+	
+}
+#searchbtn{
+clear:none;
+margin-left:0;
+position:relative;
+right:-10px;
+top:11px;
+}
