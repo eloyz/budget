@@ -18,3 +18,10 @@ urlpatterns = patterns('',
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/', include(admin.site.urls)),
 )
+
+# Local url patterns for development
+try:
+    from local_urls import extra_patterns
+    urlpatterns += extra_patterns
+except ImportError:
+    pass
