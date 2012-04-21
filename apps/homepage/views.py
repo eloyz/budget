@@ -1,6 +1,7 @@
-from django.shortcuts import render_to_response, get_object_or_404
-from django.db.models import Avg
-from django.template import RequestContext
+from django.contrib.auth.decorators import login_required
 
-def index(request, template_name="homepage/index.html"):
-	return render_to_response(template_name, {}, context_instance=RequestContext(request))
+
+@login_required
+def details(request, template_name="homepage/details.html"):
+	from django.http import HttpResponseRedirect
+	return HttpResponseRedirect('/time-spent/')
