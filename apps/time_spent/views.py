@@ -3,19 +3,21 @@ from datetime import datetime
 from itertools import cycle, count
 from uuid import uuid1
 import calendar
-# Django
+
 from django.db.models import Avg
 from django.template import RequestContext
 from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template.defaultfilters import slugify
 from django.contrib.auth.decorators import login_required
-# Fudget
+
 from time_spent.models import Income, Expense
 
 
 @login_required
 def details(request, month=0, year=0, template_name="time_spent/details.html"):
+	from time_spent.utils import EXPENSE_COLORS
+
 	user = request.user
 	calendar_dt = today = datetime.today()
 
@@ -24,13 +26,10 @@ def details(request, month=0, year=0, template_name="time_spent/details.html"):
 
 	calendar.setfirstweekday(calendar.SUNDAY)
 	days_of_week = calendar.weekheader(10).split()
-	month = calendar.Calendar(calendar.SUNDAY).monthdatescalendar(calendar_dt.year, calendar_dt.month)
-
-	# session (expire 60 days)
-	# request.session.set_expiry(60*60*24*60)
-	# slug = request.session.get('slug', uuid1())
-	# request.session['slug'] = slug
-
+	month = calendar.Calendar(calendar.SUNDAY).monthdatescalendar(
+		calendar_dt.year, 
+		calendar_dt.month
+	)
 
 	expenses = Expense.objects.filter(creator=user).order_by('pk')
 
@@ -38,7 +37,7 @@ def details(request, month=0, year=0, template_name="time_spent/details.html"):
 		income = Income.objects.get(creator=user)
 	except:
 		income = Income.objects.create(
-			label = "",
+			label = '',
 			amount = 3000,
 			creator = user,
 		)
@@ -48,29 +47,13 @@ def details(request, month=0, year=0, template_name="time_spent/details.html"):
 	hourly_income = income.per_hour(num_workdays)
 	daily_income = income.per_day(num_workdays)
 
-	# budget_per_day = float(month_budget) / len(work_days(calendar_dt.month, month))
-	# budget_per_hour = budget_per_day / 8.0
-
-	color_list = [
-		'#AB2F27', # red
-		'#D08021', # orange
-		'#D19919', # yelloworange
-		'#EFC443', # yellow
-		'#A7B929', # olive
-		'#84BB3B', # lime
-		'#57A336', # green
-		'#45A388', # bluegreen
-		'#4784A3', # teal
-		'#668ADE', # blue
-	]
-
-	colors = cycle(color_list)
+	colors = cycle(EXPENSE_COLORS)
 	counter = count(0)
 
 	expense_list = []
 	for i in range(10): expense_list.append({'pk':0, 'label':'', 'amount':0, 'color':colors.next(), 'hours':0, 'days':0})
 
-	colors = cycle(color_list)
+	colors = cycle(EXPENSE_COLORS)
 
 	for expense in expenses[:10]:
 
@@ -136,16 +119,6 @@ def details(request, month=0, year=0, template_name="time_spent/details.html"):
 
 	days_in_month = calendar.mdays[calendar_dt.month]
 	hours_in_month = days_in_month*8
-
-	print 'work days', num_workdays
-	print 'work hours', num_workdays*8
-	print 'total expense', total_expense
-	print 'expense in hours', total_expense/hourly_income
-
-	print 'hours spent making money', (num_workdays*8) - (total_expense/hourly_income)
-	print 'days spent making money', (num_workdays) - (total_expense/daily_income)
-	
-	print "expense hours", expense_hours
 
 	net_hours = (num_workdays*8) - (total_expense/hourly_income)
 	net_days = (num_workdays) - (total_expense/daily_income)
