@@ -100,7 +100,7 @@
 		</div>
 
 		<div class="header">
-		{% for day_of_week in days_of_weeks %}
+		{% for day_of_week in days_of_week %}
 			<div>{{ day_of_week }}</div>
 		{% endfor %}
 		</div>
@@ -155,7 +155,7 @@
 		*/
 
 		var min_height = min_height ? min_height:120;
-		var browser_height = $(window).height() - 50;
+		var browser_height = $(window).height() - 60;
 		var num_weeks = $('.week').length;
 		var week_height = browser_height/num_weeks;
 
