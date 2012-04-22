@@ -90,6 +90,7 @@ INSTALLED_APPS = (
 	'registration',
 	'homepage',
 	'time_spent',
+    'post_recieve',
     'django.contrib.admin',
     'django.contrib.admindocs',
 )
