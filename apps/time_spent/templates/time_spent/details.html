@@ -131,4 +131,41 @@
 </table>
 
 </body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>
+
+	$(document).ready(function(){
+
+		calendar_resize();
+		$(window).resize(function(){
+			calendar_resize();
+		});
+
+	});
+
+	var calendar_resize = function(min_height){
+		/*
+		Resets the calendar height by changing the height
+		on the weeks. The days have a height of 100% which
+		inherits from the week height.
+
+		A minimum height can be set. This minimum height is
+		per day. I default a height of a 120px day.
+		*/
+
+		var min_height = min_height ? min_height:120;
+		var browser_height = $(window).height() - 50;
+		var num_weeks = $('.week').length;
+		var week_height = browser_height/num_weeks;
+
+		if(week_height < min_height){
+			week_height = min_height;
+		};
+
+		$('.week').css('height', week_height + 'px')
+	}
+
+</script>
+
 </html>
