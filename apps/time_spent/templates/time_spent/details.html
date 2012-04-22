@@ -108,6 +108,7 @@
 
 		<div class="weekdays">
 		{% for week in month %}
+			<div class="week">
 			{% for day in week %}
 				{% if day.month = month_int and day.weekday < calendar.SATURDAY %}
 				<div class="day {{ day|today_class }}">
@@ -120,6 +121,7 @@
 				</div>
 				{% endif %}
 			{% endfor %}
+			</div>
 		{% endfor %}
 		</div>
 		<div class="clear"></div>

@@ -42,7 +42,6 @@ table td {
 	text-align: center;
 }
 .month .weekdays {
-	border: 1px solid #C0C9EB;
 	border-right: none;
 	border-bottom: none;
 }
@@ -52,18 +51,32 @@ table td {
 .month .weekdays .today .numeral {
 	background-color: #FFD;
 }
+.month .week {
+	min-width: 700px;
+}
+
+/* top border on calendar */
+.month .week:first-child .day {
+	border-top: 1px solid #C0C9EB;
+}
+
+/* left border on calendar */
+.month .day:first-child {
+	border-left: 1px solid #C0C9EB;
+}
+
 .month .day .numeral {
 	background-color:#E1E7FF;
 	text-align: right;
 	padding-right: 10px;
 }
 .month .day {
-	width:14.22%;
-	height:120px;
+	width: 14.285714286%;
+	width: 14.15%;
+	height: 120px;
 	float: left;
-	border: 1px solid #C0C9EB;
-	border-left: none;
-	border-top: none;
+	border-right: 1px solid #C0C9EB;
+	border-bottom: 1px solid #C0C9EB;
 	overflow: hidden;
 }
 .day .stock {
