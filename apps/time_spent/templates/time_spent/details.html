@@ -6,7 +6,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<title>Rollover Calendar</title>
-	<link rel="stylesheet" href="{{ MEDIA_URL }}styles/calendar.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="{{ MEDIA_URL }}styles/calendar.css" type="text/css">
+	<!-- <link rel="stylesheet" href="{{ MEDIA_URL }}styles/bootstrap.css" type="text/css">
+	<link rel="stylesheet" href="{{ MEDIA_URL }}styles/bootstrap-responsive.css" type="text/css"> -->
 </head>
 
 <body>
@@ -66,6 +68,10 @@
 						<div class="label">Net Days</div>
 						<div class="value">{{ net_days|floatformat:"2" }} days</div>
 					</div>
+					<!-- <div class="extra-days-wrap">
+						<div class="label">Survive Ratio</div>
+						<div class="value">{{ survive_percentage|floatformat:"0" }} &#37;</div>
+					</div> -->
 				</div>
 
 				<p><input type="submit" value="Update Calendar &rarr;"></p>
@@ -144,18 +150,17 @@
 
 	});
 
-	var calendar_resize = function(min_height){
+	var calendar_resize = function(gutter, min_height){
 		/*
-		Resets the calendar height by changing the height
-		on the weeks. The days have a height of 100% which
-		inherits from the week height.
+		Reset the height of the weeks on window resize.
 
-		A minimum height can be set. This minimum height is
-		per day. I default a height of a 120px day.
+		gutter - extra static space. default 70px
+		min_height - the minimum height of a week. default 75px
 		*/
 
-		var min_height = min_height ? min_height:120;
-		var browser_height = $(window).height() - 60;
+		var gutter = gutter ? gutter : 70
+		var min_height = min_height ? min_height : 75;
+		var browser_height = $(window).height() - gutter;
 		var num_weeks = $('.week').length;
 		var week_height = browser_height/num_weeks;
 

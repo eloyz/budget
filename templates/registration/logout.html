@@ -1,6 +1,12 @@
 {% extends "base_template.html" %}
 {% load i18n %}
 
+{% block title %}Budget Calendar Logout{% endblock %}
+
+{% block extra-head %}
+<link rel="stylesheet" href="{{ MEDIA_URL }}styles/calendar.css" type="text/css">
+{% endblock %}
+
 {% block body %}
-<p>{% trans "Logged out" %}</p>
+<p class="logout">{% trans "Logged out" %}</p>
 {% endblock %}
