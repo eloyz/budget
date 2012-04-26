@@ -38,13 +38,29 @@
 	<a href="{% url registration_register %}">{% trans "Sign up today." %}</a>
 </p>
 
+<div style="text-align:center"><span class="width"></span>x<span class="height"></span></div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script src="{{ MEDIA_URL }}js/jquery.hint.js"></script>
 
 <script>
 	$(document).ready(function(){
 		$('.sign-in-wrap input[title!=""]').hint();
+		dims();
 	});
+
+	$(window).resize(function() {
+		dims();
+     });
+
+	var dims = function(){
+		var the_width = $(window).width();
+		$('.width').text(the_width);
+		var the_height = $(window).height();
+		$('.height').text(the_height);
+	}
+
+
 </script>
 
 {% endblock %}
