@@ -5,8 +5,10 @@
 <link rel="stylesheet" href="{{ MEDIA_URL }}styles/bootstrap.css" type="text/css">
 <link rel="stylesheet" href="{{ MEDIA_URL }}styles/bootstrap-responsive.css" type="text/css">
 <link rel="stylesheet" href="{{ MEDIA_URL }}styles/calendar.css" type="text/css">
-<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
 {% endblock %}
+
+{% block title %}Sign in to Budget{% endblock%}
 
 {% block body %}
 
@@ -18,6 +20,13 @@
 	}
 }
 </style>
+
+{% if signed_out %}
+<div class="alert alert-success signed-out">
+	<a class="close" data-dismiss="alert" href="#">×</a>
+	Successfully signed out. Have a nice day!
+</div>
+{% endif %}
 
 <div class="sign-in-wrap">
 	<p>Sign in to <strong>Budget</strong></p>
@@ -38,29 +47,14 @@
 	<a href="{% url registration_register %}">{% trans "Sign up today." %}</a>
 </p>
 
-<div style="text-align:center"><span class="width"></span>x<span class="height"></span></div>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script src="{{ MEDIA_URL }}js/jquery.hint.js"></script>
+<script src="{{ MEDIA_URL }}js/bootstrap.min.js"></script>
 
 <script>
 	$(document).ready(function(){
 		$('.sign-in-wrap input[title!=""]').hint();
-		dims();
 	});
-
-	$(window).resize(function() {
-		dims();
-     });
-
-	var dims = function(){
-		var the_width = $(window).width();
-		$('.width').text(the_width);
-		var the_height = $(window).height();
-		$('.height').text(the_height);
-	}
-
-
 </script>
 
 {% endblock %}
