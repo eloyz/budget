@@ -31,7 +31,7 @@
 <div class="sign-in-wrap">
 	<p>Sign in to <strong>Budget</strong></p>
 
-	<form method="post" action=".">
+	<form method="post" action="{% url auth_login %}">
 		{% csrf_token %}
 		<input type="text" name="username" autocorrect="off" autocapitalize="off" title="username" />
 		<input type="password" name="password" title="password">
