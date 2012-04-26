@@ -33,7 +33,8 @@
 
 	<form method="post" action="{% url auth_login %}">
 		{% csrf_token %}
-		<input type="text" name="username" autocorrect="off" autocapitalize="off" title="username" />
+		<input type="text" name="username" title="username" 
+			autocorrect="off" autocomplete="off" autocapitalize="off" />
 		<input type="password" name="password" title="password">
 		<div class="hug"><input class="btn btn-success" type="submit" value="{% trans 'Sign in now' %}"></div>
 	</form>
