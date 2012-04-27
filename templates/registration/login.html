@@ -28,6 +28,13 @@
 </div>
 {% endif %}
 
+{% if reset_password %}
+<div class="alert alert-success signed-out">
+	<a class="close" data-dismiss="alert" href="#">×</a>
+	Reset info has been sent.
+</div>
+{% endif %}
+
 <div class="sign-in-wrap">
 	<p>Sign in to <strong>Budget</strong></p>
 
@@ -41,7 +48,11 @@
 </div>
 
 <p class="resend-password">
+{% if reset_password %}
+	<a href="{% url auth_password_reset %}">Send me my password .. <em>again</em></a>
+{% else %}
 	<a href="{% url auth_password_reset %}">Send me my password</a>
+{% endif %}
 </p>
 
 <p class="sign-up">Don't have a <strong>Budget</strong> account? 
