@@ -185,12 +185,14 @@ table td {
 		/*background-color: red;*/
 	}
 
-	.sign-in-wrap input[type="text"] {
+	.sign-in-wrap input[type="text"],
+	.sign-in-wrap input[type="email"] {
 		margin-top: 20px;
 	}
 
 	.sign-in-wrap input[type="text"],
-	.sign-in-wrap input[type="password"] {
+	.sign-in-wrap input[type="password"],
+	.sign-in-wrap input[type="email"] {
 		font-size: 16px;
 		height: 2em;
 	}
