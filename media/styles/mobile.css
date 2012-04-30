@@ -1,0 +1,74 @@
+
+
+
+body {
+	background-color: #E1E7FF;
+}
+
+.signed-out {
+	font-size: 10pt;
+	margin: 20px 20px 0 20px;
+	text-align: center;
+}
+
+.auth-wrap {
+	background-color: white;
+	padding: 15px 15px 15px;
+	margin: 20px 20px 15px;
+
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+}
+
+.auth-wrap h1 {
+	font-family: "HelveticaNeue-Light:", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-weight: 300;
+	font-size: 19pt;
+	width: 200px;
+	text-align: center;
+	margin: 0 auto 7px;
+}
+
+.auth-wrap form {
+	text-align: center;
+	margin: 0;
+}
+
+.auth-wrap input[type="text"],
+.auth-wrap input[type="password"],
+.auth-wrap input[type="email"] {
+	font-size: 16px;
+	height: 2em;
+}
+
+.auth-wrap input[type="submit"] {
+	margin-top: 10px;
+	font-size: 16px;
+	height: 2em;
+}
+
+.auth-wrap.register input{
+
+}
+
+.resend-password {
+	font-family: "HelveticaNeue-Light:", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-weight: 300;
+	text-align: center;
+}
+
+.resend-password a,
+.sign-up a {
+	padding: 10px 0;
+}
+
+.sign-up {
+	font-family: "HelveticaNeue-Light:", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-weight: 300;
+	text-align: center;
+}
