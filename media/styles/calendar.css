@@ -3,6 +3,9 @@
 .auth-wrap {
 	text-align: center;
 	margin: 20px auto 0;
+	background-color: #FFE;
+	max-width: 500px;
+	padding: 20px;
 }
 
 .auth-wrap form {
@@ -15,6 +18,21 @@
 .auth-wrap input[type="email"] {
 	font-size: 16px;
 	height: 2em;
+}
+
+.resend-password,
+.sign-up {
+	font-size: 14px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.resend-password {
+	margin-top: 20px;
+}
+
+.sign-up {
+	margin-top: 10px;
 }
 
 .month-name {
@@ -37,7 +55,7 @@ table td {
 	vertical-align: top;
 }
 .menu {
-	width: 200px;
+	max-width: 200px;
 	border-right: 1px solid #C0C9EB;
 }
 .menu-item {
@@ -54,7 +72,7 @@ table td {
 }
 .month .header div {
 	float: left;
-	width: 14%;
+	max-width: 14%;
 	border: 1px solid white;
 	text-align: center;
 }
