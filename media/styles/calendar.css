@@ -1,5 +1,22 @@
 
 
+.auth-wrap {
+	text-align: center;
+	margin: 20px auto 0;
+}
+
+.auth-wrap form {
+	margin: 10px auto 0;
+	max-width: 300px;
+}
+
+.auth-wrap input[type="text"],
+.auth-wrap input[type="password"],
+.auth-wrap input[type="email"] {
+	font-size: 16px;
+	height: 2em;
+}
+
 .month-name {
 	font-size: 1.4em;
 	line-height: .9em;
