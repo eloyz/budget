@@ -1,5 +1,9 @@
 
 
+.alert-success {
+	margin: 20px;
+}
+
 .auth-wrap {
 	text-align: center;
 	margin: 20px auto 0;
@@ -72,7 +76,7 @@ table td {
 }
 .month .header div {
 	float: left;
-	max-width: 14%;
+	min-width: 14%;
 	border: 1px solid white;
 	text-align: center;
 }
