@@ -184,3 +184,7 @@ table td {
 	font-size: 10em;
 	text-align: center;
 }
+
+#mobile-goggles {
+	display: none;
+}

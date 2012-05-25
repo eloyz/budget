@@ -1,0 +1,118 @@
+
+body {
+    margin: 0;
+    font-family: "HelveticaNeue-Light:", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-size: 14px;
+}
+
+.alert-success {
+    margin: 20px;
+}
+
+.resend-password,
+.sign-up {
+    font-size: 14px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.resend-password {
+    margin-top: 20px;
+}
+
+.sign-up {
+    margin-top: 10px;
+}
+
+.month-name {
+    font-size: 1.4em;
+    line-height: .9em;
+    margin-bottom:3px;
+}
+.hr {
+    height: 1px;
+    background-color: #C0C9EB;
+    margin-bottom: 10px;
+}
+table {
+    font-size: 12px;
+    font-family: Verdana;
+    width: 100%;
+    border-collapse: collapse;
+}
+table td {
+    vertical-align: top;
+}
+
+.menu-item {
+    color: white;
+    margin: 1px 0;
+    padding: 5px;
+}
+.menu .label {
+    width: 85px;
+}
+
+
+.day .stock {
+    color: white;
+    text-align: center;
+    padding: 5px;
+}
+.clear {
+    clear: both;
+}
+.today-link {
+    float: left;
+    margin: 0 10px;
+}
+.month-nav {
+    float: left;
+    margin-right: 10px;
+}
+.prev, .next {
+    color: white;
+    font-size: 1em;
+    line-height: 1em;
+    text-decoration: none;
+    background-color: #82A5FF;
+    padding: 0 5px;
+}
+.menu-counter {
+    width: 15px;
+    float: left;
+    text-align: right;
+    margin-top: 6px;
+    margin-right: 3px;
+}
+.mode-wrap {
+    top: 10px;
+    right: 20px;
+    position: absolute;
+}
+.income-wrap {
+    background-color: #e1e6ff;
+    padding: 10px 5px;
+    margin-bottom: 3px;
+}
+.income-wrap input {
+    font-size: 16px;
+}
+
+.income-wrap .daily-income,
+.income-wrap .hourly-income {
+    color: #4784a3;
+    font-size: .8em;
+}
+.totals {
+    background-color: #e1e6ff;
+    padding: 10px 5px;
+    border-bottom: #82a6ff 1px solid;
+    margin-top: 3px;
+}
+.totals .label {
+    float: left;
+    text-align: right;
+    margin-right: 10px;
+    width: 110px;
+}

@@ -56,13 +56,14 @@ MEDIA_URL = '/media/'
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/media/static/'
+ADMIN_MEDIA_PREFIX = '/media/static/admin/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = ''
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
+    'django_mobile.loader.Loader',
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 )
@@ -70,6 +71,8 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django_mobile.middleware.MobileDetectionMiddleware',
+    'django_mobile.middleware.SetFlavourMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
 )
@@ -77,7 +80,13 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
-	os.path.join(PROJECT_ROOT, "templates"),
+    os.path.join(PROJECT_ROOT, "templates"),
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.auth',
+    'django.core.context_processors.media',
+    'django_mobile.context_processors.flavour',
 )
 
 INSTALLED_APPS = (
@@ -87,15 +96,16 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-	'registration',
-	'homepage',
-	'time_spent',
+    'django_mobile',
+    'registration',
+    'homepage',
+    'time_spent',
     'post_recieve',
     'django.contrib.admin',
     'django.contrib.admindocs',
 )
 
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'media','static')
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'media', 'static')
 STATIC_URL = '/media/static/'
 
 LOGIN_REDIRECT_URL = '/time-spent/'
