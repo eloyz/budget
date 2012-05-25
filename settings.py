@@ -108,7 +108,7 @@ INSTALLED_APPS = (
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'media', 'static')
 STATIC_URL = '/media/static/'
 
-LOGIN_REDIRECT_URL = '/time-spent/'
+LOGIN_REDIRECT_URL = '/'
 
 # Registration - Number of days before activation period expires
 ACCOUNT_ACTIVATION_DAYS = 7
