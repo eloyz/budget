@@ -68,3 +68,14 @@ body {
 	font-weight: 300;
 	text-align: center;
 }
+
+
+.menu {
+	width: 100%;
+}
+
+.month {
+	display: none;
+}
+
+
