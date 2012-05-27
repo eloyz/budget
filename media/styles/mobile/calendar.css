@@ -63,11 +63,19 @@ table td {
 .clear {
     clear: both;
 }
+
+.month-nav {
+    float: left;
+}
+
 .today-link {
     float: left;
-    margin: 0 10px;
 }
-.month-nav {
+.today-link a {
+    padding: 15px;
+}
+
+.month-prev-next {
     float: left;
     margin-right: 10px;
 }
@@ -76,9 +84,14 @@ table td {
     font-size: 1em;
     line-height: 1em;
     text-decoration: none;
-    background-color: #82A5FF;
-    padding: 0 5px;
+    padding: 15px;
+    background-color: #333;
+    margin: 0;
 }
+.sign-out {
+    padding: 15px;
+}
+
 .menu-counter {
     width: 15px;
     float: left;
@@ -95,7 +108,7 @@ table td {
 .awesome-bar {
     color: white;
     background-color: black;
-    padding: 10px;
+    padding: 15px 0;
     text-align: right;
 }
 

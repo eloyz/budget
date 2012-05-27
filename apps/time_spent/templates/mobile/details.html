@@ -12,9 +12,16 @@
 <body>
 
 <div class="awesome-bar">
+    <div class="month-nav">
+        <div class="today-link"><a href="{% url time-spent %}">Today</a></div>
+        <div class="month-prev-next">
+            <a class="prev" href="{{ prev_month_url }}">&larr;</a> 
+            <a class="next" href="{{ next_month_url }}">&rarr;</a>
+        </div>
+        <span>{{ month_name }} {{ year_int }}</span>
+    </div>
 {% if user %}
-    <span>{{ user }}</span>
-    <a href="{% url auth_logout %}">sign out</a>
+    <a class="sign-out" href="{% url auth_logout %}">sign out</a>
 {% else %}
     <span>This is a demo.</span>
     <a href="javascript:;">reset demo</a>
