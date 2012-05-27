@@ -217,8 +217,6 @@ def desktop_context(**kwargs):
     expense_daily = total_expense / num_workdays
     expense_yearly = total_expense * 12
 
-    print type(income.amount), type(total_expense)
-
     net_income = income.amount - total_expense
     month_name = calendar.month_name[calendar_dt.month]
 
@@ -234,8 +232,6 @@ def desktop_context(**kwargs):
     survive_hours = (num_workdays * 8) - net_hours
     survive_percentage = survive_hours / (num_workdays * 8) * 100
     enjoy_percentage = net_hours / (num_workdays * 8) * 100
-
-    print num_workdays
 
     return {
         'calendar': calendar,
