@@ -166,7 +166,7 @@ def desktop_context(**kwargs):
     if request.method == "POST":
         expense_list = []
 
-        income.amount = request.POST.get('income-amount', None)
+        income.amount = float(request.POST.get('income-amount', None))
         income.save()
 
         post_items = ['stock-item-pk', 'stock-item-label', 'stock-item-amount', 'stock-item-color']
@@ -216,6 +216,8 @@ def desktop_context(**kwargs):
     expense_hourly = total_expense / (num_workdays * 24)
     expense_daily = total_expense / num_workdays
     expense_yearly = total_expense * 12
+
+    print type(income.amount), type(total_expense)
 
     net_income = income.amount - total_expense
     month_name = calendar.month_name[calendar_dt.month]
