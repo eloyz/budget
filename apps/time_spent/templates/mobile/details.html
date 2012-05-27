@@ -50,8 +50,6 @@
         </div>
 </div>
 
-<div style="height:300px"></div>
-
 </body>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
@@ -60,17 +58,6 @@ $('.item-wrap').click(function(){
     window.location=$(this).find('a').attr('href');
     return false;
 });
-
-// When ready...
-window.addEventListener("load",function() {
-    // Set a timeout...
-    setTimeout(function(){
-        // Hide the address bar!
-        window.scrollTo(0, 1);
-    }, 0);
-});
-
-
 </script>
 
 </html>
