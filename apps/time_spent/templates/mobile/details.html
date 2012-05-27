@@ -16,7 +16,7 @@
         <div class="item-wrap income">
             <div class="label">Income</div>
             <div class="amount">
-                <a href="http://google.com" data-transition="slide">&#36;{{ income.amount|floatformat:"0"|intcomma }}</a>
+                <a href="{% url income %}" data-transition="slide">&#36;{{ income.amount|floatformat:"0"|intcomma }}</a>
             </div>
             <div class="hourly daily yearly">
                 <span class="hourly">Hourly ${{ income_hourly|floatformat:"2" }}</span>
@@ -28,7 +28,7 @@
         <div class="item-wrap expense">
             <div class="label">Expenses</div>
             <div class="amount">
-                <a href="http://google.com" data-transition="none">&#36;{{ total_expense|floatformat:"0"|intcomma }}</a>
+                <a href="{% url expenses %}" data-transition="none">&#36;{{ total_expense|floatformat:"0"|intcomma }}</a>
             </div>
             <div class="hourly daily yearly">
                 <span class="hourly">Hourly ${{ expense_hourly|floatformat:"2" }}</span>
@@ -39,7 +39,9 @@
 
         <div class="item-wrap net-income">
             <div class="label">Net Income</div>
-            <div class="amount">&#36;{{ net_income|floatformat:"0"|intcomma }}</div>
+            <div class="amount">
+                <a href="{% url net-income %}">&#36;{{ net_income|floatformat:"0"|intcomma }}</a>
+            </div>
             <div class="hourly daily yearly">
                 <span class="hourly">Hourly ${{ net_hours|floatformat:"2" }}</span>
                 <span class="daily">Daily ${{ net_days|floatformat:"2" }}</span>

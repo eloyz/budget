@@ -1,6 +1,9 @@
 from django.conf.urls.defaults import *
 
-urlpatterns = patterns('time_spent', 
-    url(r'^$', 'views.details', name="time-spent"),
-	url(r'^(?P<month>\d{1,2})/(?P<year>\d{4})/$', 'views.details', name="time-spent"),
+urlpatterns = patterns('time_spent',
+    url(r'^$', 'views.detail', name="time-spent"),
+    url(r'^/income/$', 'views.income', name="income"),
+    url(r'^/expenses/$', 'views.expenses', name="expenses"),
+    url(r'^/net-income/$', 'views.net_income', name="net-income"),
+    url(r'^(?P<month>\d{1,2})/(?P<year>\d{4})/$', 'views.detail', name="time-spent"),
 )
