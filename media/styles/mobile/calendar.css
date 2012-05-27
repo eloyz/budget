@@ -65,7 +65,7 @@ table td {
 }
 
 .month-nav {
-    float: left;
+    /*float: left;*/
 }
 
 .today-link {
@@ -109,8 +109,7 @@ table td {
     color: white;
     background-color: black;
     padding: 15px 0;
-    height: 16px;
-    text-align: right;
+    /*text-align: right;*/
 }
 
 .awesome-bar a {
