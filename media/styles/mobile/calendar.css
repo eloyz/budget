@@ -3,6 +3,7 @@ body {
     margin: 0;
     font-family: "HelveticaNeue-Light:", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     font-size: 14px;
+    background-color: #E1E7FF;
 }
 
 .alert-success {
@@ -102,9 +103,12 @@ table td {
     font-size: 16px;
 }
 
-.item-wrap .hourly-income,
-.item-wrap .daily-income {
-    color: #4784a3;
+.item-wrap .amount {
+    font-size: 30px;
+}
+
+.item-wrap .hourly.daily.yearly span {
+    color: #4784A3;
     font-size: .8em;
 }
 

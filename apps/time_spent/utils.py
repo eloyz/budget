@@ -130,6 +130,7 @@ def desktop_context(**kwargs):
 
     income_hourly = income.amount / (num_workdays * 24)
     income_daily = income.amount / num_workdays
+    income_yearly = income.amount * 12
 
     colors = cycle(EXPENSE_COLORS)
     counter = count(0)
@@ -214,12 +215,14 @@ def desktop_context(**kwargs):
     total_expense = get_total_expense(expenses)
     expense_hourly = total_expense / (num_workdays * 24)
     expense_daily = total_expense / num_workdays
+    expense_yearly = total_expense * 12
 
     net_income = income.amount - total_expense
     month_name = calendar.month_name[calendar_dt.month]
 
     net_hours = net_income / (num_workdays * 24)
     net_days = net_income / num_workdays
+    net_years = net_income * 12
 
     next_month_url = reverse('time-spent', args=next_month(calendar_dt.month, calendar_dt.year))
     prev_month_url = reverse('time-spent', args=prev_month(calendar_dt.month, calendar_dt.year))
@@ -244,8 +247,10 @@ def desktop_context(**kwargs):
         'total_expense': total_expense,
         'expense_hourly': expense_hourly,
         'expense_daily': expense_daily,
+        'expense_yearly': expense_yearly,
         'income_hourly': income_hourly,
         'income_daily': income_daily,
+        'income_yearly': income_yearly,
         'month_name': month_name,
         'stock_list': expense_list,
         'income': income,
@@ -254,6 +259,7 @@ def desktop_context(**kwargs):
         'num_work_days': num_workdays,
         'net_hours': net_hours,
         'net_days': net_days,
+        'net_years': net_years,
         'survive_percentage': survive_percentage,
         'enjoy_percentage': enjoy_percentage,
     }

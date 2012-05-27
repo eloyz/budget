@@ -1,52 +1,45 @@
-{% load time_spent_tags %}
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!doctype>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<html>
 <head>
-    <title>Rollover Calendar</title>
+    <title>Budget Summary</title>
     <link rel="stylesheet" href="{{ MEDIA_URL }}styles/mobile/calendar.css">
-    <link rel="stylesheet" href="{{ MEDIA_URL }}styles/mobile.css" type="text/css">
     <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
 </head>
 
 <body>
 
 <div class="menu">
-    <form action="" method="post" accept-charset="utf-8">
-
-        {% csrf_token %}
 
         <div class="item-wrap income">
             <div class="label">Income</div>
-            &#36;<input type="text" name="income-amount" value="{{ income.amount|floatformat:"0" }}" />
-            <div class="hourly daily">
-                <span class="hourly-income">Hourly ${{ income_hourly|floatformat:"2" }}</span>
-                <span class="daily-income">Daily ${{ income_daily|floatformat:"2" }}</span>
+            <div class="amount">&#36;{{ income.amount|floatformat:"2" }}</div>
+            <div class="hourly daily yearly">
+                <span class="hourly">Hourly ${{ income_hourly|floatformat:"2" }}</span>
+                <span class="daily">Daily ${{ income_daily|floatformat:"2" }}</span>
+                <span class="yearly">Yearly ${{ income_yearly|floatformat:"2" }}</span>
             </div>
         </div>
 
         <div class="item-wrap expense">
             <div class="label">Expenses</div>
             <div class="amount">&#36;{{ total_expense|floatformat:"2" }}</div>
-            <div class="hourly daily">
-                <span class="daily-income">Hourly ${{ expense_hourly|floatformat:"2" }}</span>
-                <span class="hourly-income">Daily ${{ expense_daily|floatformat:"2" }}</span>
+            <div class="hourly daily yearly">
+                <span class="hourly">Hourly ${{ expense_hourly|floatformat:"2" }}</span>
+                <span class="daily">Daily ${{ expense_daily|floatformat:"2" }}</span>
+                <span class="yearly">Yearly ${{ expense_yearly|floatformat:"2" }}</span>
             </div>
         </div>
 
         <div class="item-wrap net-income">
             <div class="label">Net Income</div>
             <div class="amount">&#36;{{ net_income|floatformat:"2" }}</div>
-            <div class="hourly daily">
-                <span class="daily-income">Hourly ${{ net_hours|floatformat:"2" }}</span>
-                <span class="hourly-income">Daily ${{ net_days|floatformat:"2" }}</span>
+            <div class="hourly daily yearly">
+                <span class="hourly">Hourly ${{ net_hours|floatformat:"2" }}</span>
+                <span class="daily">Daily ${{ net_days|floatformat:"2" }}</span>
+                <span class="yearly">Yearly ${{ net_years|floatformat:"2" }}</span>
             </div>
         </div>
-
-        <p><input type="submit" value="Save Changes"></p>
-    </form>
 </div>
 
 </body>
