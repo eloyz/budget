@@ -107,6 +107,11 @@ table td {
     font-size: 30px;
 }
 
+.item-wrap .amount a {
+    color: inherit;
+    text-decoration: none;
+}
+
 .item-wrap .hourly.daily.yearly span {
     color: #4784A3;
     font-size: .8em;
