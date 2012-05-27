@@ -92,6 +92,17 @@ table td {
     position: absolute;
 }
 
+.awesome-bar {
+    color: white;
+    background-color: black;
+    padding: 10px;
+    text-align: right;
+}
+
+.awesome-bar a {
+    color: inherit;
+}
+
 .item-wrap {
     background-color: #e1e6ff;
     padding: 10px 5px;

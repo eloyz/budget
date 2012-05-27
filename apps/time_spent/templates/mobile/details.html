@@ -11,8 +11,19 @@
 
 <body>
 
-<div class="menu">
+<div class="awesome-bar">
+{% if user %}
+    <span>{{ user }}</span>
+    <a href="{% url auth_logout %}">sign out</a>
+{% else %}
+    <span>This is a demo.</span>
+    <a href="javascript:;">reset demo</a>
+    <a href="{% url registration_register %}">sign up</a>
+    <a href="{% url auth_login %}">sign in</a>
+{% endif %}
+</div>
 
+<div class="menu">
         <div class="item-wrap income">
             <div class="label">Income</div>
             <div class="amount">
@@ -24,7 +35,6 @@
                 <span class="yearly">Yearly ${{ income_yearly|floatformat:"0"|intcomma }}</span>
             </div>
         </div>
-
         <div class="item-wrap expense">
             <div class="label">Expenses</div>
             <div class="amount">
@@ -36,7 +46,6 @@
                 <span class="yearly">Yearly ${{ expense_yearly|floatformat:"0"|intcomma }}</span>
             </div>
         </div>
-
         <div class="item-wrap net-income">
             <div class="label">Net Income</div>
             <div class="amount">

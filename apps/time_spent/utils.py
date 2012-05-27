@@ -62,6 +62,13 @@ def prev_month(month, year):
     return (prev_month, prev_year)
 
 
+def get_num_days(month, year):
+    from calendar import monthrange
+
+    r = monthrange(year, month)
+    return r[1] - r[0]
+
+
 def work_days(month_int=None, month=None):
     """List of workdays"""
     import calendar
@@ -97,8 +104,8 @@ def desktop_context(**kwargs):
     from time_spent.utils import EXPENSE_COLORS
 
     request = kwargs['request']
-    month = kwargs['month']
-    year = kwargs['year']
+    month = int(kwargs['month'])
+    year = int(kwargs['year'])
 
     user = request.user
     calendar_dt = today = datetime.today()
@@ -124,12 +131,11 @@ def desktop_context(**kwargs):
             creator=user,
         )
 
+    num_days = get_num_days(calendar_dt.month, calendar_dt.year)
     num_workdays = len(work_days(calendar_dt.month, month))
-    # hourly_income = income.per_hour(num_workdays)
-    # daily_income = income.per_day(num_workdays)
 
-    income_hourly = income.amount / (num_workdays * 24)
-    income_daily = income.amount / num_workdays
+    income_hourly = income.amount / (num_days * 24)
+    income_daily = income.amount / num_days
     income_yearly = income.amount * 12
 
     colors = cycle(EXPENSE_COLORS)
@@ -213,15 +219,15 @@ def desktop_context(**kwargs):
             })
 
     total_expense = get_total_expense(expenses)
-    expense_hourly = total_expense / (num_workdays * 24)
-    expense_daily = total_expense / num_workdays
+    expense_hourly = total_expense / (num_days * 24)
+    expense_daily = total_expense / num_days
     expense_yearly = total_expense * 12
 
     net_income = income.amount - total_expense
     month_name = calendar.month_name[calendar_dt.month]
 
-    net_hours = net_income / (num_workdays * 24)
-    net_days = net_income / num_workdays
+    net_hours = net_income / (num_days * 24)
+    net_days = net_income / num_days
     net_years = net_income * 12
 
     next_month_url = reverse('time-spent', args=next_month(calendar_dt.month, calendar_dt.year))
