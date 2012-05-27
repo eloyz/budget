@@ -97,6 +97,7 @@ table td {
     padding: 10px 5px;
     margin-bottom: 3px;
     border-bottom: 1px solid #82A6FF;
+    cursor: pointer;
 }
 
 .item-wrap input {
@@ -104,6 +105,7 @@ table td {
 }
 
 .item-wrap .amount {
+    color: #4784A3;
     font-size: 30px;
 }
 
