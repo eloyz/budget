@@ -22,7 +22,7 @@
     {% csrf_token %}
     <div class="item-wrap income no-border">
         <div class="label">Monthly Income</div>
-        $<input type="text" name="income-amount" value="{{ income.amount|floatformat:"0" }}" />
+        <input type="text" name="income-amount" value="{{ income.amount|floatformat:"0" }}" />
     </div>
     <div class="right-align"><input type="submit" value="Save changes"></div>
 </form>

@@ -107,6 +107,7 @@ body {
     padding: 5px 0;
 }
 .menu.income input[type="text"] {
+    font-size: 45px;
     width: 95%;
 }
 .menu.income input[type="submit"] {
