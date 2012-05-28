@@ -37,7 +37,8 @@ def income(request, month=0, year=0):
     returning variable responses depending on device.
     """
     from django.template import RequestContext
-    from django.shortcuts import render_to_response
+    from django.core.urlresolvers import reverse
+    from django.shortcuts import render_to_response, HttpResponseRedirect
     from time_spent.models import Income
 
     default_income = settings.BUDGET_DEFAULTS['income']
@@ -54,6 +55,8 @@ def income(request, month=0, year=0):
     if request.method == "POST":
         income.amount = request.POST.get('income-amount')
         income.save()
+
+        return HttpResponseRedirect(reverse('homepage'))
 
     return render_to_response(
         'income.html',
