@@ -35,25 +35,12 @@ body {
     background-color: #C0C9EB;
     margin-bottom: 10px;
 }
-table {
-    font-size: 12px;
-    font-family: Verdana;
-    width: 100%;
-    border-collapse: collapse;
-}
-table td {
-    vertical-align: top;
-}
 
 .menu-item {
     color: white;
     margin: 1px 0;
     padding: 5px;
 }
-.menu .label {
-    width: 85px;
-}
-
 
 .day .stock {
     color: white;
@@ -62,10 +49,6 @@ table td {
 }
 .clear {
     clear: both;
-}
-
-.month-nav {
-    /*float: left;*/
 }
 
 .today-link {
@@ -112,8 +95,16 @@ table td {
     /*text-align: right;*/
 }
 
+.awesome-bar .back-link a {
+    padding: 15px;
+}
+
 .awesome-bar a {
     color: inherit;
+}
+
+.menu .right-align {
+    text-align: right;
 }
 
 .item-wrap {
@@ -122,6 +113,10 @@ table td {
     margin-bottom: 3px;
     border-bottom: 1px solid #82A6FF;
     cursor: pointer;
+}
+
+.item-wrap.no-border {
+    border: none;
 }
 
 .item-wrap input {
