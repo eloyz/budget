@@ -103,6 +103,16 @@ body {
     color: inherit;
 }
 
+.menu.income .label {
+    padding: 5px 0;
+}
+.menu.income input[type="text"] {
+    width: 95%;
+}
+.menu.income input[type="submit"] {
+    margin: 0 15px 0 0;
+}
+
 .menu .right-align {
     text-align: right;
 }
