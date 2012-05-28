@@ -172,7 +172,7 @@ def desktop_context(**kwargs):
     if request.method == "POST":
         expense_list = []
 
-        income.amount = float(request.POST.get('income-amount', None))
+        income.amount = float(request.POST.get('income-amount', 0))
         income.save()
 
         post_items = ['stock-item-pk', 'stock-item-label', 'stock-item-amount', 'stock-item-color']

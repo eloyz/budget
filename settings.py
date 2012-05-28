@@ -114,6 +114,10 @@ LOGIN_REDIRECT_URL = '/'
 # Registration - Number of days before activation period expires
 ACCOUNT_ACTIVATION_DAYS = 7
 
+BUDGET_DEFAULTS = {
+    'income': 3000
+}
+
 try:
     from local_settings import *
 except ImportError:

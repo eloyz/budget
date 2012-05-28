@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
 
 # create method that returns context
 # put context together with template
@@ -37,11 +38,26 @@ def income(request, month=0, year=0):
     """
     from django.template import RequestContext
     from django.shortcuts import render_to_response
-    from time_spent.utils import desktop_context
+    from time_spent.models import Income
+
+    default_income = settings.BUDGET_DEFAULTS['income']
+
+    try:
+        income = Income.objects.get(creator=request.user)
+    except:
+        income = Income.objects.create(
+            label=unicode(),
+            amount=default_income,
+            creator=request.user,
+        )
+
+    if request.method == "POST":
+        income.amount = request.POST.get('income-amount')
+        income.save()
 
     return render_to_response(
-        'details.html',
-        desktop_context(request=request, month=month, year=year),
+        'income.html',
+        {'income': income},
         context_instance=RequestContext(request)
     )
 
@@ -58,7 +74,7 @@ def expenses(request, month=0, year=0):
     from time_spent.utils import desktop_context
 
     return render_to_response(
-        'details.html',
+        'expenses.html',
         desktop_context(request=request, month=month, year=year),
         context_instance=RequestContext(request)
     )
@@ -76,7 +92,7 @@ def net_income(request, month=0, year=0):
     from time_spent.utils import desktop_context
 
     return render_to_response(
-        'details.html',
+        'net-income.html',
         desktop_context(request=request, month=month, year=year),
         context_instance=RequestContext(request)
     )
