@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     (r'^accounts/', include('registration.urls')),
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/', include(admin.site.urls)),
+    (r'^convert/', include('lazysignup.urls')),
 )
 
 try:

@@ -89,6 +89,11 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django_mobile.context_processors.flavour',
 )
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'lazysignup.backends.LazySignupBackend',
+)
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -99,6 +104,8 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     'django_mobile',
     'registration',
+    'lazysignup',
+    'south',
     'homepage',
     'time_spent',
     'post_recieve',
