@@ -96,7 +96,7 @@
 
 					{% if user|is_lazy_user %}
 						<span>Hi Friend,</span>
-						<a href="{% url lazysignup_convert %}">learn more</a>
+						<a href="{% url auth_login %}">sign in</a>
 					{% else %}
 						<span>{{ user }}</span>
 						<a href="{% url auth_logout %}">sign out</a>
