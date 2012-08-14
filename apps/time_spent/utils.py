@@ -134,9 +134,9 @@ def desktop_context(**kwargs):
     num_days = get_num_days(calendar_dt.month, calendar_dt.year)
     num_workdays = len(work_days(calendar_dt.month, month))
 
-    income_hourly = income.amount / (num_days * 24)
-    income_daily = income.amount / num_days
-    income_yearly = income.amount * 12
+    income_yearly = income.amount * 12  # 12 months per year
+    income_daily = income_yearly / (52 * 40)  # 52 weeks, 40 hours a week
+    income_hourly = income_daily / 8  # 8 hours a day
 
     colors = cycle(EXPENSE_COLORS)
     counter = count(0)
