@@ -31,7 +31,8 @@ content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-wi
 {% endif %}
 
 <div class="auth-wrap">
-	<h1>Sign in to <strong>Budget</strong></h1>
+	<h1><a href="{% url homepage %}">
+		Sign in to <strong>Budget</strong></a></h1>
 	<form method="post" action="{% url auth_login %}">
 		{% csrf_token %}
 		<input type="text" name="username" title="username" 

@@ -12,6 +12,11 @@
 	padding: 20px;
 }
 
+.auth-wrap h1 a {
+	color: inherit;
+	text-decoration: inherit;
+}
+
 .auth-wrap form {
 	margin: 10px auto 0;
 	max-width: 300px;
