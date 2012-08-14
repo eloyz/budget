@@ -1,4 +1,6 @@
 {% load time_spent_tags %}
+{% load i18n lazysignup_tags %}
+
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
 	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
@@ -91,8 +93,15 @@
 			<div class="mode-wrap">
 				
 				{% if user %}
-					<span>{{ user }}</span>
-					<a href="{% url auth_logout %}">sign out</a>
+
+					{% if user|is_lazy_user %}
+						<span>Hi Friend,</span>
+						<a href="{% url lazysignup_convert %}">learn more</a>
+					{% else %}
+						<span>{{ user }}</span>
+						<a href="{% url auth_logout %}">sign out</a>
+					{% endif %}
+
 				{% else %}
 					<span>This is a demo.</span>
 					<a href="javascript:;">Reset demo</a>

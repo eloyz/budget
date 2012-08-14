@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
+from lazysignup.decorators import allow_lazy_user
 
 # create method that returns context
 # put context together with template
@@ -11,7 +12,7 @@ from django.conf import settings
 # mobile version
 
 
-@login_required
+@allow_lazy_user
 def detail(request, month=0, year=0):
     """
     We're building the response and then sending it via this view.
@@ -29,7 +30,7 @@ def detail(request, month=0, year=0):
     )
 
 
-@login_required
+@allow_lazy_user
 def income(request, month=0, year=0):
     """
     We're building the response and then sending it via this view.
@@ -65,7 +66,7 @@ def income(request, month=0, year=0):
     )
 
 
-@login_required
+@allow_lazy_user
 def expenses(request, month=0, year=0):
     """
     We're building the response and then sending it via this view.
@@ -83,7 +84,7 @@ def expenses(request, month=0, year=0):
     )
 
 
-@login_required
+@allow_lazy_user
 def net_income(request, month=0, year=0):
     """
     We're building the response and then sending it via this view.

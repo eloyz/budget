@@ -1,0 +1,38 @@
+{% extends "base_template.html" %}
+{% load i18n %}
+
+{% block title %}Budget Calendar Convert{% endblock %}
+
+{% block extra-head %}
+<link rel="stylesheet" href="{{ MEDIA_URL }}styles/calendar.css" />
+<link rel="stylesheet" href="{{ MEDIA_URL }}styles/mobile.css" />
+{% endblock %}
+
+{% block body %}
+<div class="auth-wrap register">
+    <h1>Get a <strong>Budget</strong></h1>
+    <form method="post" action=".">
+
+        {{ form.username.errors }}
+        {% csrf_token %}
+
+        <input type="text" name="username" title="username" 
+            autocorrect="off" autocomplete="off" autocapitalize="off" />
+        <input type="email" name="email" title="email" maxlength="75"/>
+        <input type="password" name="password1" title="password">
+        <input type="password" name="password2" title="password">
+        <div class="hug"><input class="btn btn-success" type="submit" value="{% trans 'Sign up now' %}"></div>
+    </form>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="{{ MEDIA_URL }}js/jquery.hint.js"></script>
+<script src="{{ MEDIA_URL }}js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('.auth-wrap input[title!=""]').hint();
+    });
+</script>
+
+{% endblock %}
