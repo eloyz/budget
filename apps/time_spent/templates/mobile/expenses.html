@@ -13,37 +13,16 @@
 
 <body>
 
+<div class="awesome-bar">
+    <div class="month-nav">
+        <div class="back-link"><a href="{% url homepage %}">Back</a></div>
+    </div>
+</div>
+
 <div class="menu">
     <form action="" method="post" accept-charset="utf-8">
 
         {% csrf_token %}
-
-        <div class="item-wrap income">
-            <div class="label">Income</div>
-            &#36;<input type="text" name="income-amount" value="{{ income.amount|floatformat:"0" }}" />
-            <div class="hourly daily">
-                <span class="daily-income">Daily ${{ daily_income|floatformat:"2" }}</span>
-                <span class="hourly-income">Hourly ${{ hourly_income|floatformat:"2" }}</span>
-            </div>
-        </div>
-
-        <div class="item-wrap expense">
-            <div class="label">Expense</div>
-            &#36;<input type="text" name="income-amount" value="{{ income.amount|floatformat:"0" }}" />
-            <div class="hourly daily">
-                <span class="daily-income">Daily ${{ daily_income|floatformat:"2" }}</span>
-                <span class="hourly-income">Hourly ${{ hourly_income|floatformat:"2" }}</span>
-            </div>
-        </div>
-
-        <div class="item-wrap net-income">
-            <div class="label">Net Income</div>
-            &#36;<input type="text" name="income-amount" value="{{ income.amount|floatformat:"0" }}" />
-            <div class="hourly daily">
-                <span class="daily-income">Daily ${{ daily_income|floatformat:"2" }}</span>
-                <span class="hourly-income">Hourly ${{ hourly_income|floatformat:"2" }}</span>
-            </div>
-        </div>
 
         {% for stock in stock_list %}
         <div style="background-color:{{ stock.color }}" class="menu-item">
@@ -60,37 +39,6 @@
             </div>
         </div>
         {% endfor %}
-
-        <div class="totals">
-            <div class="total-wrap">
-                <div class="label">Total Expense</div>
-                <div class="value">${{ total_expense|floatformat:"2" }}</div>
-            </div>
-            <div class="left-over-wrap">
-                <div class="label">Net Income</div>
-                <div class="value">${{ extra_money|floatformat:"2" }}</div>
-            </div>
-            <div class="extra-days-wrap">
-                <div class="label">Work Days</div>
-                <div class="value">{{ num_work_days|floatformat:"2" }} days</div>
-            </div>
-            <div class="extra-days-wrap">
-                <div class="label">Work Hours</div>
-                <div class="value">{{ num_work_hours|floatformat:"2" }} hrs</div>
-            </div>
-            <div class="extra-days-wrap">
-                <div class="label">Net Hours</div>
-                <div class="value">{{ net_hours|floatformat:"2" }} hrs</div>
-            </div>
-            <div class="extra-days-wrap">
-                <div class="label">Net Days</div>
-                <div class="value">{{ net_days|floatformat:"2" }} days</div>
-            </div>
-            <!-- <div class="extra-days-wrap">
-                <div class="label">Survive Ratio</div>
-                <div class="value">{{ survive_percentage|floatformat:"0" }} &#37;</div>
-            </div> -->
-        </div>
 
         <p><input type="submit" value="Update Calendar &rarr;"></p>
     </form>
