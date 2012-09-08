@@ -100,10 +100,8 @@ def net_income(request, month=0, year=0):
     """
     from django.template import RequestContext
     from django.shortcuts import render_to_response
-    from time_spent.utils import desktop_context
 
     return render_to_response(
-        'net-income.html',
-        desktop_context(request=request, month=month, year=year),
+        'net-income.html', {},
         context_instance=RequestContext(request)
     )
