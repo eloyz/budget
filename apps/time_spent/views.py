@@ -55,6 +55,14 @@ def income(request, month=0, year=0):
 
     if request.method == "POST":
         income.amount = request.POST.get('income-amount')
+
+        # non-numberic value
+        if income.amount.isalpha():
+            income.amount = 0
+        # empty string value
+        elif isinstance(income.amount, basestring):
+            income.amount = 0
+
         income.save()
 
         return HttpResponseRedirect(reverse('homepage'))
