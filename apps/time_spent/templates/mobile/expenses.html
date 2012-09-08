@@ -1,4 +1,6 @@
 {% load time_spent_tags %}
+{% load humanize %}
+
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
     "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
@@ -16,6 +18,7 @@
 <div class="awesome-bar">
     <div class="month-nav">
         <div class="back-link"><a href="{% url homepage %}">Back</a></div>
+        <div class="income">Income ${{ income|floatformat:"0"|intcomma }}</div>
     </div>
 </div>
 

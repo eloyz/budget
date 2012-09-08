@@ -92,7 +92,12 @@ body {
     color: white;
     background-color: black;
     padding: 15px 0;
-    /*text-align: right;*/
+    height: 16px;
+    position: relative;
+}
+
+.awesome-bar .back-link {
+    float: left;
 }
 
 .awesome-bar .back-link a {
@@ -101,6 +106,14 @@ body {
 
 .awesome-bar a {
     color: inherit;
+}
+
+.awesome-bar .income {
+    float: right;
+    margin-right: 20px;
+/*    position: absolute;
+    top: 0;
+    right: 0;*/
 }
 
 .menu.income .label {
