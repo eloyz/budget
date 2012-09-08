@@ -156,15 +156,23 @@ def desktop_context(**kwargs):
 
     colors = cycle(EXPENSE_COLORS)
 
+    def safe_divide(num, denom):
+        if denom == 0:
+            return denom
+        return num / denom
+
     for expense in expenses[:10]:
+
+        hours = safe_divide(expense.amount, income_hourly)
+        days = safe_divide(expense.amount, income_daily)
 
         expense_list[counter.next()] = {
             'pk': expense.pk,
             'label': expense.label,
             'amount': expense.amount,
             'color': colors.next(),
-            'hours': expense.amount / income_hourly,
-            'days': expense.amount / income_daily,
+            'hours': hours,
+            'days': days,
             'per_month': u'12days/mo',
             'per_year': u'43days/yr',
         }
