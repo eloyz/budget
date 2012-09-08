@@ -56,11 +56,11 @@ def income(request, month=0, year=0):
     if request.method == "POST":
         income.amount = request.POST.get('income-amount')
 
-        # non-numberic value
-        if income.amount.isalpha():
+        if not len(income.amount):
             income.amount = 0
-        # empty string value
-        elif isinstance(income.amount, basestring):
+        elif not income.amount.isalpha():
+            income.amount = float(income.amount)
+        else:  # is non-numeric
             income.amount = 0
 
         income.save()
