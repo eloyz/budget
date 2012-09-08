@@ -6,7 +6,8 @@
     <title>Budget Summary</title>
     <link rel="stylesheet" href="{{ MEDIA_URL }}styles/mobile/calendar.css">
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+    <meta name="viewport" 
+        content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
     <link rel="apple-touch-icon-precomposed" href="{{ MEDIA_URL }}images/budget-icon-iphone.png" />
 </head>
 
@@ -46,7 +47,7 @@
         <div class="item-wrap expense">
             <div class="label">Expenses</div>
             <div class="amount">
-                <a href="{% url expenses %}" data-transition="none">&#36;{{ total_expense|floatformat:"0"|intcomma }}</a>
+                <a href="{% url expenses %}" data-transition="none">&#36;{{ expense_monthly|floatformat:"0"|intcomma }}</a>
             </div>
             <div class="hourly daily yearly">
                 <span class="hourly">Hourly ${{ expense_hourly|floatformat:"2" }}</span>
@@ -57,19 +58,20 @@
         <div class="item-wrap net-income">
             <div class="label">Net Income</div>
             <div class="amount">
-                <a href="{% url net-income %}">&#36;{{ net_income|floatformat:"0"|intcomma }}</a>
+                <a href="{% url net-income %}">&#36;{{ net_monthly|floatformat:"0"|intcomma }}</a>
             </div>
             <div class="hourly daily yearly">
-                <span class="hourly">Hourly ${{ net_hours|floatformat:"2" }}</span>
-                <span class="daily">Daily ${{ net_days|floatformat:"2" }}</span>
-                <span class="yearly">Yearly ${{ net_years|floatformat:"0"|intcomma }}</span>
+                <span class="hourly">Hourly ${{ net_hourly|floatformat:"2" }}</span>
+                <span class="daily">Daily ${{ net_daily|floatformat:"2" }}</span>
+                <span class="yearly">Yearly ${{ net_yearly|floatformat:"0"|intcomma }}</span>
             </div>
         </div>
 </div>
 
 </body>
 
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" 
+    src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript">
 $("a").click(function (event) {
     event.preventDefault();

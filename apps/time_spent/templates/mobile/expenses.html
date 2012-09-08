@@ -27,18 +27,23 @@
 
         {% csrf_token %}
 
-        {% for stock in stock_list %}
-        <div style="background-color:{{ stock.color }}" class="menu-item">
-            <input class="color" type="hidden" name="stock-item-color" value="{{ stock.color }}">
-            <input class="pk" type="hidden" name="stock-item-pk" value="{{ stock.pk }}">
+        {% for expense in expenses %}
+        <div style="background-color:{{ expense.color }}" class="menu-item">
+            <input class="color" type="hidden" name="stock-item-color" value="{{ expense.color }}">
+            <input class="pk" type="hidden" name="stock-item-pk" value="{{ expense.pk }}">
             <div class="menu-counter">{{ forloop.counter }}</div>
-            <input class="label" type="text" name="stock-item-label" value="{{ stock.label }}">
-            $<input class="cost" type="text" size="7" name="stock-item-amount" value="{{ stock.amount|floatformat:"2" }}">
+            <input class="label" type="text" name="stock-item-label" value="{{ expense.label }}">
+            $<input class="cost" type="text" size="7" name="stock-item-amount" value="{{ expense.amount|floatformat:"2" }}">
             <div>
-                aprox. {{ stock.hours|floatformat:"0" }} hour{{ stock.hours|pluralize }}
-                {{ stock.per_month }} {{ stock.per_year }}
+                <!-- aprox. {{ expense.hours|floatformat:"0" }} hour{{ expense.hours|pluralize }}
+                {{ expense.per_month }} {{ expense.per_year }} -->
 
-                <!-- &asymp;{{ stock.days|floatformat:"2" }}days -->
+                {% if expense.hours > 23 %}
+                    aprox. {{ expense.days|floatformat:"0" }} days
+                {% else %}
+                    aprox. {{ expense.hours|floatformat:"0" }} hours
+                {% endif %}
+
             </div>
         </div>
         {% endfor %}

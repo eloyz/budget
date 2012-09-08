@@ -434,16 +434,16 @@ def mobile_context(**kwargs):
                 'per_year': u'',
             })
 
-    total_expense = get_total_expense(expenses)
+    expense_monthly = get_total_expense(expenses)
 
-    expense_yearly = total_expense * 12  # 12months
+    expense_yearly = expense_monthly * 12  # 12months
     expense_daily = expense_yearly / (52 * 7)  # 52wks 7days
     expense_hourly = expense_yearly / (52 * 7 * 24)  # 52wks * 7days * 24hrs
 
-    net_income = income.amount - total_expense
+    net_monthly = income.amount - expense_monthly
     month_name = calendar.month_name[calendar_dt.month]
 
-    net_yearly = net_income * 12  # 12months
+    net_yearly = net_monthly * 12  # 12months
     net_daily = net_yearly / (52 * 7)  # 52wks 7days
     net_hourly = net_yearly / (52 * 7 * 24)  # 52wks * 7days * 24hrs
 
@@ -465,26 +465,170 @@ def mobile_context(**kwargs):
         'year_int': calendar_dt.year,
         'next_month_url': next_month_url,
         'prev_month_url': prev_month_url,
-        'total_expense': total_expense,
+
+        'expense_yearly': expense_yearly,
+        'expense_monthly': expense_monthly,
         'expense_hourly': expense_hourly,
         'expense_daily': expense_daily,
-        'expense_yearly': expense_yearly,
 
+        'income_yearly': income_yearly,
         'income_hourly': income_hourly,
         'income_daily': income_daily,
-        'income_yearly': income_yearly,
 
         'month_name': month_name,
         'stock_list': expense_list,
         'income': income,
-        'net_income': net_income,
+        'net_monthly': net_monthly,
         'num_work_hours': num_workdays * 8,
         'num_work_days': num_workdays,
 
-        'net_hours': net_hourly,
-        'net_days': net_daily,
-        'net_years': net_yearly,
+        'net_hourly': net_hourly,
+        'net_daily': net_daily,
+        'net_yearly': net_yearly,
 
         'survive_percentage': survive_percentage,
         'enjoy_percentage': enjoy_percentage,
+    }
+
+
+def expense_context(**kwargs):
+    """
+    Returns context for for desktop response.
+    Ideally you're not being redirected based
+    on what device or stage you are within this
+    application.
+
+    Ideally the application shows
+    you exactly what you need and we remove
+    the linkage factor. Some would frown at this.
+
+    I think my limiting people's resources, it's
+    easier to keep them focused and have them appreciate
+    the interface.
+    """
+    import calendar
+    from datetime import datetime
+    from itertools import cycle, count
+    from time_spent.models import Income, Expense
+    from time_spent.utils import EXPENSE_COLORS
+
+    request = kwargs['request']
+    # month = int(kwargs['month'])
+    # year = int(kwargs['year'])
+
+    user = request.user
+    calendar_dt = datetime.today()
+
+    # if month and year:
+        # calendar_dt = datetime(day=1, month=int(month), year=int(year))
+
+    calendar.setfirstweekday(calendar.SUNDAY)
+    # month = calendar.Calendar(calendar.SUNDAY).monthdatescalendar(
+    #     calendar_dt.year,
+    #     calendar_dt.month
+    # )
+
+    expenses = Expense.objects.filter(creator=user).order_by('pk')
+
+    try:
+        income = Income.objects.get(creator=user)
+    except:
+        income = Income.objects.create(
+            label=unicode(),
+            amount=3000,
+            creator=user,
+        )
+
+    income_yearly = income.amount * 12  # 12months
+    income_daily = income_yearly / (52 * 7)  # 52wks 7days
+    income_hourly = income_yearly / (52 * 7 * 24)  # 52wks * 7days * 24hrs
+
+    colors = cycle(EXPENSE_COLORS)
+    counter = count(0)
+
+    expense_list = []
+    for i in range(10):
+        expense_list.append({
+            'pk': 0,
+            'label': u'',
+            'amount': 0,
+            'color': colors.next(),
+            'hours': 0,
+            'days': 0,
+            'per_month': u'',
+            'per_year': u'',
+        })
+
+    colors = cycle(EXPENSE_COLORS)
+
+    def safe_divide(num, denom):
+        if denom == 0:
+            return denom
+        return num / denom
+
+    for expense in expenses[:10]:
+
+        hours = safe_divide(expense.amount, income_hourly)
+        days = safe_divide(expense.amount, income_daily)
+
+        expense_list[counter.next()] = {
+            'pk': expense.pk,
+            'label': expense.label,
+            'amount': expense.amount,
+            'color': colors.next(),
+            'hours': hours,
+            'days': days,
+            'per_month': u'12days/mo',
+            'per_year': u'43days/yr',
+        }
+
+    if request.method == "POST":
+        expenses = []
+
+        post_items = ['stock-item-pk', 'stock-item-label', 'stock-item-amount', 'stock-item-color']
+        expense_tuples = zip(*[dict(request.POST)[item] for item in post_items])
+
+        counter = count(0)
+
+        for expense_tuple in expense_tuples:
+            pk, label, amount, color = expense_tuple[:4]
+
+            if amount:
+                amount = float(amount)
+            else:
+                amount = 0
+
+            if pk:
+                pk = int(pk)
+            else:
+                pk = 0
+
+            if pk or amount > 0:
+                try:
+                    expense = Expense.objects.get(pk=pk)
+                except:
+                    expense = Expense()
+
+                expense.dt = calendar_dt
+                expense.label = label
+                expense.amount = unicode(amount)
+                expense.creator = user
+                expense.save()
+
+                pk = expense.pk
+
+            expense_list.append({
+                "pk": pk,
+                "label": label,
+                "amount": amount,
+                "color": color,
+                "hours": safe_divide(amount, income_hourly),
+                "days": safe_divide(amount, income_daily),
+                'per_month': u'12days/mo',
+                'per_year': u'',
+            })
+
+    return {
+        'expenses': expense_list,
+        'income': income,
     }

@@ -88,11 +88,11 @@ def expenses(request, month=0, year=0):
     """
     from django.template import RequestContext
     from django.shortcuts import render_to_response
-    from time_spent.utils import mobile_context
+    from time_spent.utils import expense_context
 
     return render_to_response(
         'expenses.html',
-        mobile_context(request=request, month=month, year=year),
+        expense_context(request=request, month=month, year=year),
         context_instance=RequestContext(request)
     )
 
