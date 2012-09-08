@@ -1,4 +1,3 @@
-from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from lazysignup.decorators import allow_lazy_user
 
@@ -83,11 +82,11 @@ def expenses(request, month=0, year=0):
     """
     from django.template import RequestContext
     from django.shortcuts import render_to_response
-    from time_spent.utils import desktop_context
+    from time_spent.utils import mobile_context
 
     return render_to_response(
         'expenses.html',
-        desktop_context(request=request, month=month, year=year),
+        mobile_context(request=request, month=month, year=year),
         context_instance=RequestContext(request)
     )
 
