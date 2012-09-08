@@ -35,7 +35,7 @@ def get_total_expense(expenses):
     for expense in expenses:
         total_expense += expense.amount
 
-    return float(total_expense)
+    return total_expense
 
 
 def next_month(month, year):
@@ -134,9 +134,13 @@ def desktop_context(**kwargs):
     num_days = get_num_days(calendar_dt.month, calendar_dt.year)
     num_workdays = len(work_days(calendar_dt.month, month))
 
-    income_yearly = income.amount * 12  # 12 months per year
-    income_daily = income_yearly / (52 * 40)  # 52 weeks, 40 hours a week
-    income_hourly = income_daily / 8  # 8 hours a day
+    # income_yearly = income.amount * 12  # 12 months per year
+    # income_daily = income_yearly / (52 * 40)  # 52 weeks, 40 hours a week
+    # income_hourly = income_daily / 8  # 8 hours a day
+
+    income_yearly = income.amount * 12  # 12months
+    income_daily = income_yearly / (52 * 7)  # 52wks 7days
+    income_hourly = income_yearly / (52 * 7 * 24)  # 52wks * 7days * 24hrs
 
     colors = cycle(EXPENSE_COLORS)
     counter = count(0)
@@ -220,16 +224,20 @@ def desktop_context(**kwargs):
                 "label": label,
                 "amount": amount,
                 "color": color,
-                "hours": float(amount) / income_hourly,
-                "days": float(amount) / income_daily,
+                "hours": safe_divide(amount, income_hourly),
+                "days": safe_divide(amount, income_daily),
                 'per_month': u'12days/mo',
                 'per_year': u'',
             })
 
     total_expense = get_total_expense(expenses)
-    expense_hourly = total_expense / (num_days * 24)
-    expense_daily = total_expense / num_days
-    expense_yearly = total_expense * 12
+    # expense_hourly = total_expense / (num_days * 24)
+    # expense_daily = total_expense / num_days
+    # expense_yearly = total_expense * 12
+
+    expense_yearly = total_expense * 12  # 12months
+    expense_daily = expense_yearly / (52 * 7)  # 52wks 7days
+    expense_hourly = expense_yearly / (52 * 7 * 24)  # 52wks * 7days * 24hrs
 
     net_income = income.amount - total_expense
     month_name = calendar.month_name[calendar_dt.month]
@@ -237,6 +245,10 @@ def desktop_context(**kwargs):
     net_hours = net_income / (num_days * 24)
     net_days = net_income / num_days
     net_years = net_income * 12
+
+    net_yearly = net_income * 12  # 12months
+    net_daily = net_yearly / (52 * 7)  # 52wks 7days
+    net_hourly = net_yearly / (52 * 7 * 24)  # 52wks * 7days * 24hrs
 
     next_month_url = reverse('time-spent', args=next_month(calendar_dt.month, calendar_dt.year))
     prev_month_url = reverse('time-spent', args=prev_month(calendar_dt.month, calendar_dt.year))
@@ -260,18 +272,22 @@ def desktop_context(**kwargs):
         'expense_hourly': expense_hourly,
         'expense_daily': expense_daily,
         'expense_yearly': expense_yearly,
+
         'income_hourly': income_hourly,
         'income_daily': income_daily,
         'income_yearly': income_yearly,
+
         'month_name': month_name,
         'stock_list': expense_list,
         'income': income,
         'net_income': net_income,
         'num_work_hours': num_workdays * 8,
         'num_work_days': num_workdays,
-        'net_hours': net_hours,
-        'net_days': net_days,
-        'net_years': net_years,
+
+        'net_hours': net_hourly,
+        'net_days': net_daily,
+        'net_years': net_yearly,
+
         'survive_percentage': survive_percentage,
         'enjoy_percentage': enjoy_percentage,
     }
