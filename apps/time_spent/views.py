@@ -20,11 +20,17 @@ def detail(request, month=0, year=0):
     """
     from django.template import RequestContext
     from django.shortcuts import render_to_response
-    from time_spent.utils import desktop_context
+    from time_spent.utils import mobile_context, desktop_context
+
+    if request.flavour == 'mobile':
+        context = mobile_context(
+            request=request, month=month, year=year)
+    else:
+        context = desktop_context(
+            request=request, month=month, year=year)
 
     return render_to_response(
-        'details.html',
-        desktop_context(request=request, month=month, year=year),
+        'details.html', context,
         context_instance=RequestContext(request)
     )
 
