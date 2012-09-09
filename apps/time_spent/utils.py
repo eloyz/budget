@@ -578,12 +578,10 @@ def expense_context(**kwargs):
             'color': colors.next(),
             'hours': hours,
             'days': days,
-            'per_month': u'12days/mo',
-            'per_year': u'43days/yr',
         }
 
     if request.method == "POST":
-        expenses = []
+        expense_list = []
 
         post_items = ['stock-item-pk', 'stock-item-label', 'stock-item-amount', 'stock-item-color']
         expense_tuples = zip(*[dict(request.POST)[item] for item in post_items])
