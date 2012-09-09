@@ -109,11 +109,8 @@ body {
 }
 
 .awesome-bar .income {
-    float: right;
     margin-right: 20px;
-/*    position: absolute;
-    top: 0;
-    right: 0;*/
+    text-align: right;
 }
 
 .menu.income .label {
