@@ -106,8 +106,16 @@ def net_income(request, month=0, year=0):
     """
     from django.template import RequestContext
     from django.shortcuts import render_to_response
+    from time_spent.models import Income, Expense
+    from time_spent.utils import get_total_expense
+
+    income = Income.objects.get(creator=request.user)
+    expenses = Expense.objects.filter(creator=request.user).order_by('pk')
+    expense_monthly = get_total_expense(expenses)
+    net_monthly = income.amount - expense_monthly
 
     return render_to_response(
-        'net-income.html', {},
+        'net-income.html',
+        {'net_income': net_monthly},
         context_instance=RequestContext(request)
     )
