@@ -108,7 +108,7 @@ body {
     color: inherit;
 }
 
-.awesome-bar .income {
+.awesome-bar .expense {
     margin-right: 20px;
     text-align: right;
 }
@@ -133,6 +133,10 @@ body {
 .menu.income input[type="submit"] {
     font-size: 16px;
     margin: 0 15px 0 0;
+}
+
+.menu.expense input[type="text"] {
+    font-size: 18px;
 }
 
 .menu .right-align {

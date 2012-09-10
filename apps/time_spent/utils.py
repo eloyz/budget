@@ -231,9 +231,6 @@ def desktop_context(**kwargs):
             })
 
     total_expense = get_total_expense(expenses)
-    # expense_hourly = total_expense / (num_days * 24)
-    # expense_daily = total_expense / num_days
-    # expense_yearly = total_expense * 12
 
     expense_yearly = total_expense * 12  # 12months
     expense_daily = expense_yearly / (52 * 7)  # 52wks 7days
@@ -513,20 +510,11 @@ def expense_context(**kwargs):
     from time_spent.utils import EXPENSE_COLORS
 
     request = kwargs['request']
-    # month = int(kwargs['month'])
-    # year = int(kwargs['year'])
 
     user = request.user
     calendar_dt = datetime.today()
 
-    # if month and year:
-        # calendar_dt = datetime(day=1, month=int(month), year=int(year))
-
     calendar.setfirstweekday(calendar.SUNDAY)
-    # month = calendar.Calendar(calendar.SUNDAY).monthdatescalendar(
-    #     calendar_dt.year,
-    #     calendar_dt.month
-    # )
 
     expenses = Expense.objects.filter(creator=user).order_by('pk')
 
@@ -641,5 +629,5 @@ def expense_context(**kwargs):
 
     return {
         'expenses': expense_list,
-        'income': income,
+        'total_expense': get_total_expense(expenses),
     }
