@@ -104,6 +104,7 @@ def net_income(request, month=0, year=0):
     Rather than going the more traditional route, we're opting for
     returning variable responses depending on device.
     """
+    from math import floor, ceil
     from django.template import RequestContext
     from django.shortcuts import render_to_response
     from time_spent.models import Income, Expense
@@ -113,11 +114,12 @@ def net_income(request, month=0, year=0):
     expenses = Expense.objects.filter(creator=request.user).order_by('pk')
     expense_monthly = get_total_expense(expenses)
     net_monthly = income.amount - expense_monthly
+    net_yearly = net_monthly * 12
+    net_daily = net_yearly / (52 * 7)  # 52wks 7days
 
     mbp = 1700
-
-    months = mbp / net_monthly
-    days = mbp % 30
+    months = floor(mbp / net_monthly)
+    days = ceil(net_daily % 30)
 
     return render_to_response(
         'net-income.html', {
