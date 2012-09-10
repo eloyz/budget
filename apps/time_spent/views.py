@@ -114,8 +114,15 @@ def net_income(request, month=0, year=0):
     expense_monthly = get_total_expense(expenses)
     net_monthly = income.amount - expense_monthly
 
+    mbp = 1700
+
+    months = mbp / net_monthly
+    days = mbp % 30
+
     return render_to_response(
-        'net-income.html',
-        {'net_income': net_monthly},
-        context_instance=RequestContext(request)
+        'net-income.html', {
+        'net_income': net_monthly,
+        'months': months,
+        'days': days,
+        }, context_instance=RequestContext(request)
     )
