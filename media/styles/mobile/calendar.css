@@ -113,6 +113,16 @@ body {
     text-align: right;
 }
 
+.awesome-bar .site-name {
+    float: left;
+    margin-left: 10px;
+}
+
+.awesome-bar .sign-in {
+    text-align: right;
+    margin-right: 20px;
+}
+
 .menu.income .label {
     padding: 5px 0;
 }
