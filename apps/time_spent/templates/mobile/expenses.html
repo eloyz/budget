@@ -35,15 +35,19 @@
             <input class="label" type="text" name="stock-item-label" value="{{ expense.label }}">
             $<input class="cost" type="text" size="7" name="stock-item-amount" value="{{ expense.amount|floatformat:"2" }}">
             <div>
-                <!-- aprox. {{ expense.hours|floatformat:"0" }} hour{{ expense.hours|pluralize }}
-                {{ expense.per_month }} {{ expense.per_year }} -->
+                {% for t in expense.time %}
 
-                {% if expense.hours > 23 %}
-                    aprox. {{ expense.days|floatformat:"0" }} days
-                {% else %}
-                    aprox. {{ expense.hours|floatformat:"0" }} hours
-                {% endif %}
+                    {% if t and forloop.counter == 1 %}
+                        {{ t|floatformat:"0" }}
+                        day{{ t|pluralize }}
+                    {% endif %}
 
+                    {% if t and forloop.counter == 2 %}
+                        {{ t|floatformat:"0" }}
+                        hour{{ t|pluralize }}
+                    {% endif %}
+                     
+                {% endfor %}
             </div>
         </div>
         {% endfor %}

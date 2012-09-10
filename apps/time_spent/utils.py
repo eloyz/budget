@@ -566,6 +566,19 @@ def expense_context(**kwargs):
             return denom
         return num / denom
 
+    def expense_time(expense, income):
+        """
+        Returns tuple of days and hours equal
+        to the total expense cost.
+        """
+        import math
+
+        income_yearly = income * 12  # 12months
+        income_hourly = income_yearly / (52 * 7 * 24)  # 52wks * 7days * 24hrs
+        hours = safe_divide(expense, income_hourly)
+
+        return (math.floor(hours / 24), math.ceil(hours % 24))
+
     for expense in expenses[:10]:
 
         hours = safe_divide(expense.amount, income_hourly)
@@ -576,6 +589,7 @@ def expense_context(**kwargs):
             'label': expense.label,
             'amount': expense.amount,
             'color': colors.next(),
+            'time': expense_time(expense.amount, income.amount),
             'hours': hours,
             'days': days,
         }
@@ -620,10 +634,9 @@ def expense_context(**kwargs):
                 "label": label,
                 "amount": amount,
                 "color": color,
+                'time': expense_time(amount, income.amount),
                 "hours": safe_divide(amount, income_hourly),
                 "days": safe_divide(amount, income_daily),
-                'per_month': u'12days/mo',
-                'per_year': u'',
             })
 
     return {
