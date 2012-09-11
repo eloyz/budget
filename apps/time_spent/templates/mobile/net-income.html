@@ -18,9 +18,17 @@
 </div>
 
 <p class="wishlist-msg">You have ${{ net_income|floatformat:"2"|intcomma }} a month to spend
-on your wishlist. [coming soon]</p>
+on your wishlist. <a href="">Start wishing.</a></p>
 
-<p class="wishlist-msg">{{ months|floatformat:"0"|intcomma }} months and {{ days|floatformat:"0" }} days to get a Macbook Air.</p>
+<p class="wishlist-msg">
+
+    {% if months %}
+        {{ months|floatformat:"0"|intcomma }} months and 
+    {% endif %}
+
+    {{ days|floatformat:"0" }} days to get a Macbook Air. (${{ mbp|floatformat:"0"|intcomma }})
+
+</p>
 
 </body>
 

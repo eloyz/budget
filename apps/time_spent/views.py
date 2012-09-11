@@ -117,14 +117,17 @@ def net_income(request, month=0, year=0):
     net_yearly = net_monthly * 12
     net_daily = net_yearly / (52 * 7)  # 52wks 7days
 
-    mbp = 1700
+    mbp = 1700 * 1.0825
+    total_days = mbp / net_daily
+
     months = floor(mbp / net_monthly)
-    days = ceil(net_daily % 30)
+    days = ceil(total_days % 30)
 
     return render_to_response(
         'net-income.html', {
         'net_income': net_monthly,
         'months': months,
         'days': days,
+        'mbp': mbp,
         }, context_instance=RequestContext(request)
     )
