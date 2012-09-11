@@ -8,16 +8,19 @@ class Income(models.Model):
     amount = models.FloatField()
     creator = models.ForeignKey(User)
     session_hash = models.CharField(max_length=200)
-
-    # month_dt = models.DateTime()
-    # TODO: consider an income per month
-    # TODO: consider different number of hours per day
+    # hours = models.FloatField()
 
     def per_day(self, num_workdays):
         return float(self.amount) / float(num_workdays)
 
     def per_hour(self, num_workdays):
-        return self.per_day(num_workdays) / 8.0
+        return self.per_day(num_workdays) / 8.0  # self.hours
+
+    # def hours_per_day(self):
+    #     return self.hours / 7
+
+    # def hours_per_month(self, month=None):
+    #     return self.hours_per_day() * (month.days() or 30)
 
     def __unicode__(self):
         return "%s %s" % (self.label, self.amount)
@@ -33,20 +36,4 @@ class Expense(models.Model):
     def __unicode__(self):
         return "%s %s" % (self.label, self.amount)
 
-# class DemoSession(models.Model):
-#   """Holds demo session ids"""
-#   session_hash = models.CharField(max_length=200)
-#   expense = models.ManyToManyField(Expense)
-#   income = models.ManyToManyField(Income)
-#
-# class DemoAccount(models.Model):
-#   """docstring for DemoAccount"""
-#   create_dt = models.DateTime()
-#   update_dt = models.DateTime()
-#
-# class DemoAccountMap():
-#   """docstring for DemoAccountMap"""
-#   account = models.Integer
-#   content_type = models.Integer()
-#   object_id = models.Integer()
 
