@@ -120,7 +120,7 @@ def net_income(request, month=0, year=0):
     mbp = 1700 * 1.0825
 
     months = floor(mbp / net_monthly)
-    days = ceil(mbp - (net_monthly * months)) / net_daily
+    days = ceil((mbp - (net_monthly * months)) / net_daily)
 
     return render_to_response(
         'net-income.html', {
