@@ -115,10 +115,7 @@ def net_income(request, month=0, year=0):
     expense_monthly = get_total_expense(expenses)
     net_monthly = income.amount - expense_monthly
 
-    wish_list = Wish.objects.all()
-
-    # wish_list = []
-
+    wish_list = Wish.objects.filter(creator=request.user)
 
     net_yearly = net_monthly * 12
     net_daily = net_yearly / (52 * 7)  # 52wks 7days
