@@ -107,13 +107,19 @@ def net_income(request, month=0, year=0):
     from math import floor, ceil
     from django.template import RequestContext
     from django.shortcuts import render_to_response
-    from time_spent.models import Income, Expense
+    from time_spent.models import Income, Expense, Wish
     from time_spent.utils import get_total_expense
 
     income = Income.objects.get(creator=request.user)
     expenses = Expense.objects.filter(creator=request.user).order_by('pk')
     expense_monthly = get_total_expense(expenses)
     net_monthly = income.amount - expense_monthly
+
+    wish_list = Wish.objects.all()
+
+    # wish_list = []
+
+
     net_yearly = net_monthly * 12
     net_daily = net_yearly / (52 * 7)  # 52wks 7days
 
@@ -128,5 +134,30 @@ def net_income(request, month=0, year=0):
         'months': months,
         'days': days,
         'mbp': mbp,
+        'wish_list': wish_list,
+        }, context_instance=RequestContext(request)
+    )
+
+
+@allow_lazy_user
+def wish(request):
+    from django.template import RequestContext
+    from django.core.urlresolvers import reverse
+    from django.shortcuts import render_to_response
+    from django.shortcuts import HttpResponseRedirect
+    from time_spent.forms import WishForm
+
+    if request.method == "POST":
+        form = WishForm(request.POST)
+        if form.is_valid():
+            wish = form.save(commit=False)
+            wish.creator = request.user
+            wish.save()
+
+        return HttpResponseRedirect(reverse('net-income'))
+
+    return render_to_response(
+        'wish.html', {
+            'form': WishForm()
         }, context_instance=RequestContext(request)
     )

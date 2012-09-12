@@ -17,19 +17,11 @@
     </div>
 </div>
 
-<p class="wishlist-msg">You have ${{ net_income|floatformat:"2"|intcomma }} a month to spend
-on your wishlist. <a href="{% url wish %}">Start wishing.</a></p>
-
-    {% for wish in wish_list %}
-        <div class="wishlist-msg">
-        {% if wish.months %}
-            {{ wish.months|floatformat:"0"|intcomma }} months and 
-        {% endif %}
-
-        {{ wish.days|floatformat:"0" }} days to get a {{ wish.label }} 
-        (${{ wish.amount_with_tax|floatformat:"0"|intcomma }})
-        </div>
-    {% endfor %}
+<form action="{% url wish %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Make wish">
+</form>
 
 </body>
 
