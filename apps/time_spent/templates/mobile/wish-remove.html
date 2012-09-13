@@ -1,0 +1,32 @@
+<!doctype>
+
+<html>
+<head>
+    <title>Remove wish</title>
+    <link rel="stylesheet" href="{{ MEDIA_URL }}styles/mobile/calendar.css">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+</head>
+
+<body>
+
+<div class="awesome-bar">
+    <div class="month-nav">
+        <div class="back-link"><a href="{% url wish-change wish.pk %}">Back</a></div>
+    </div>
+</div>
+
+<div class="wishlist-msg">
+
+    <p>{{ wish.label }} {{ wish.amount }}</p>
+
+    <form action="{% url wish-remove wish.pk %}" method="post">
+        {% csrf_token %}
+        Saying no to this, means saying yes to something else.
+        <input type="submit" value="Remove wish">
+    </form>
+</div>
+
+</body>
+
+</html>

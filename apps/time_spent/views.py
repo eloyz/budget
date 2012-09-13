@@ -1,4 +1,8 @@
 from django.conf import settings
+from django.http import HttpResponseRedirect
+from django.template import RequestContext
+from django.shortcuts import render_to_response, get_object_or_404
+from django.core.urlresolvers import reverse
 from lazysignup.decorators import allow_lazy_user
 
 # create method that returns context
@@ -18,8 +22,6 @@ def detail(request, month=0, year=0):
     Rather than going the more traditional route, we're opting for
     returning variable responses depending on device.
     """
-    from django.template import RequestContext
-    from django.shortcuts import render_to_response
     from time_spent.utils import mobile_context, desktop_context
 
     if request.flavour == 'mobile':
@@ -42,9 +44,6 @@ def income(request, month=0, year=0):
     Rather than going the more traditional route, we're opting for
     returning variable responses depending on device.
     """
-    from django.template import RequestContext
-    from django.core.urlresolvers import reverse
-    from django.shortcuts import render_to_response, HttpResponseRedirect
     from time_spent.models import Income
 
     default_income = settings.BUDGET_DEFAULTS['income']
@@ -86,8 +85,6 @@ def expenses(request, month=0, year=0):
     Rather than going the more traditional route, we're opting for
     returning variable responses depending on device.
     """
-    from django.template import RequestContext
-    from django.shortcuts import render_to_response
     from time_spent.utils import expense_context
 
     return render_to_response(
@@ -104,8 +101,6 @@ def net_income(request, month=0, year=0):
     Rather than going the more traditional route, we're opting for
     returning variable responses depending on device.
     """
-    from django.template import RequestContext
-    from django.shortcuts import render_to_response
     from time_spent.models import NetIncome, Wish
 
     net_income = NetIncome(creator=request.user)
@@ -122,10 +117,6 @@ def net_income(request, month=0, year=0):
 
 @allow_lazy_user
 def wish(request):
-    from django.template import RequestContext
-    from django.core.urlresolvers import reverse
-    from django.shortcuts import render_to_response
-    from django.shortcuts import HttpResponseRedirect
     from time_spent.forms import WishForm
 
     if request.method == "POST":
@@ -140,5 +131,46 @@ def wish(request):
     return render_to_response(
         'wish.html', {
             'form': WishForm()
+        }, context_instance=RequestContext(request)
+    )
+
+
+@allow_lazy_user
+def wish_change(request, pk):
+    from time_spent.models import Wish
+    from time_spent.forms import WishForm
+    wish = get_object_or_404(Wish, pk=pk)
+
+    if request.method == "POST":
+        form = WishForm(request.POST, instance=wish)
+        if form.is_valid():
+            wish = form.save(commit=False)
+            wish.creator = request.user
+            wish.save()
+
+        return HttpResponseRedirect(reverse('net-income'))
+
+    form = WishForm(instance=wish)
+
+    return render_to_response(
+        'wish-change.html', {
+        'wish': wish,
+        'form': form,
+        }, context_instance=RequestContext(request)
+    )
+
+
+@allow_lazy_user
+def wish_remove(request, pk):
+    from time_spent.models import Wish
+    wish = get_object_or_404(Wish, pk=pk)
+
+    if request.method == "POST":
+        wish.delete()
+        return HttpResponseRedirect(reverse('net-income'))
+
+    return render_to_response(
+        'wish-remove.html', {
+        'wish': wish,
         }, context_instance=RequestContext(request)
     )

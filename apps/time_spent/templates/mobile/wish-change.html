@@ -1,0 +1,31 @@
+{% load humanize %}
+<!doctype>
+
+<html>
+<head>
+    <title>Change Wish</title>
+    <link rel="stylesheet" href="{{ MEDIA_URL }}styles/mobile/calendar.css">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+</head>
+
+<body>
+
+<div class="awesome-bar">
+    <div class="month-nav">
+        <div class="back-link"><a href="{% url net-income %}">Back</a></div>
+    </div>
+</div>
+
+<div class="wishlist-msg">
+<form action="{% url wish-change wish.pk %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Change wish"> or
+    <a href="{% url wish-remove wish.pk %}">Remove wish</a>
+</form>
+</div>
+
+</body>
+
+</html>
