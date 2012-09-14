@@ -24,15 +24,35 @@ on your wishlist. <a href="{% url wish %}">Start wishing.</a></p>
         <div class="wishlist-msg">
 
         <a href="{% url wish-change wish.pk %}">
-        {% if wish.months %}
-            {{ wish.months|floatformat:"0"|intcomma }} months and 
+
+        {% if wish.time.months %}
+            {{ wish.time.months|floatformat:"0"|intcomma }} months and 
         {% endif %}
 
-        {{ wish.days|floatformat:"0" }} days to get a {{ wish.label }} 
+        {{ wish.time.days|floatformat:"0" }} days to get a {{ wish.label }} 
         (${{ wish.amount_with_tax|floatformat:"0"|intcomma }})
         </a>
         </div>
     {% endfor %}
+
+    <div class="hr"></div>
+
+    <p class="wishlist-msg">
+        All your wishes can come true in 
+
+        {% if total_time.years %}
+            {{ total_time.years|floatformat:"0" }} year{{ total_time.years|pluralize }}, 
+        {% endif %}
+
+        {% if total_time.months %}
+            {{ total_time.months|floatformat:"0" }} month{{ total_time.months|pluralize }}, and 
+        {% endif %}
+
+        {{ total_time.days|floatformat:"0" }} day{{ total_time.days|pluralize }}.</p>
+
+
+    <p class="wishlist-msg">
+        Your wish list total comes to ${{ total.amount|floatformat:"0"|intcomma }}.</p>
 
 </body>
 

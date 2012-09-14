@@ -126,10 +126,12 @@ body {
 .menu.income .label {
     padding: 5px 0;
 }
+
 .menu.income input[type="text"] {
     font-size: 45px;
     width: 100%;
 }
+
 .menu.income input[type="submit"] {
     font-size: 16px;
     margin: 0 15px 0 0;
@@ -190,5 +192,11 @@ body {
 /*= net income */
 .wishlist-msg {
     margin: 20px;
+}
+
+.hr {
+    height: 1px;
+    margin: 0 20px;
+    background-color: #82a6ff;
 }
 

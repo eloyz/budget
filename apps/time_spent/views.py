@@ -107,10 +107,22 @@ def net_income(request, month=0, year=0):
     wish_list = Wish.objects.filter(
         creator=request.user).order_by('amount')
 
+    amount = Wish.total_amount(request.user)
+    total_time = Wish.total_time(request.user)
+
+    total = {
+        'amount': amount,
+        'years': 0,
+        'months': 0,
+        'days': 0,
+    }
+
     return render_to_response(
         'net-income.html', {
         'net_income': net_income.monthly(),
         'wish_list': wish_list,
+        'total': total,
+        'total_time': total_time,
         }, context_instance=RequestContext(request)
     )
 

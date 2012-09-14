@@ -43,6 +43,7 @@ class Expense(models.Model):
 
         return sum(expenses)
 
+
 class NetIncome(object):
 
     def __init__(self, *args, **kwargs):
@@ -63,6 +64,7 @@ class NetIncome(object):
     def yearly(self):
         return self.monthly() * 12
 
+
 class Wish(models.Model):
     label = models.CharField(max_length=200)
     amount = models.FloatField()
@@ -77,14 +79,53 @@ class Wish(models.Model):
         if hasattr(self, 'creator'):
             self.net_income = NetIncome(creator=self.creator)
 
+    @classmethod
+    def total_amount(cls, creator):
+        wishes = cls.objects.filter(
+            creator=creator).values_list('amount', flat=True)
+
+        return sum(wishes)
+
+    @classmethod
+    def total_time(cls, creator):
+        from math import ceil, floor
+
+        net = NetIncome(creator=creator)
+        total = cls.total_amount(creator) * 1.0825  # tax
+
+        years = floor(total / net.yearly())
+        months = floor(total / net.monthly())
+        days = ceil((total - (net.monthly() * months)) / net.daily())
+
+        return {
+            'years': years,
+            'months': months,
+            'days': days,
+        }
+
     def amount_with_tax(self):
         return self.amount * 1.0825
+
+    def time(self):
+        from math import ceil
+
+        days = (self.amount_with_tax() - \
+            (self.net_income.monthly() * self.months())) / self.net_income.daily()
+
+        return {
+            'years': self.years(),
+            'months': self.months(),
+            'days': ceil(days),
+        }
+
+    def years(self):
+        from math import floor
+        return floor(self.amount_with_tax() / self.net_income.yearly())
 
     def months(self):
         from math import floor
         return floor(self.amount_with_tax() / self.net_income.monthly())
 
     def days(self):
-        from math import ceil
-        days = (self.amount_with_tax() - (self.net_income.monthly() * self.months())) / self.net_income.daily()
-        return ceil(days)
+        from math import floor
+        return floor(self.amount_with_tax() / self.net_income.daily())
