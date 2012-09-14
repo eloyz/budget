@@ -94,7 +94,7 @@ class Wish(models.Model):
         total = cls.total_amount(creator) * 1.0825  # tax
 
         years = floor(total / net.yearly())
-        months = floor(total / net.monthly())
+        months = floor((total - (net.yearly() * years)) / net.monthly())
         days = ceil((total - (net.monthly() * months)) / net.daily())
 
         return {
