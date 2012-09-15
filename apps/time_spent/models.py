@@ -109,15 +109,18 @@ class Wish(models.Model):
         return self.amount * 1.0825
 
     def time(self):
-        from math import ceil
+        from math import ceil, floor
 
-        days = (self.amount_with_tax() - \
-            (self.net_income.monthly() * self.months())) / self.net_income.daily()
+        years = self.years()
+        months = floor((self.amount_with_tax() - \
+            (self.net_income.yearly() * years)) / self.net_income.monthly())
+        paid = (self.net_income.monthly() * months) + (self.net_income.yearly() * years)
+        days = ceil((self.amount_with_tax() - paid) / self.net_income.daily())
 
         return {
-            'years': self.years(),
-            'months': self.months(),
-            'days': ceil(days),
+            'years': years,
+            'months': months,
+            'days': days,
         }
 
     def years(self):

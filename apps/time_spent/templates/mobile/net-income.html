@@ -25,11 +25,15 @@ on your wishlist. <a href="{% url wish %}">Start wishing.</a></p>
 
         <a href="{% url wish-change wish.pk %}">
 
-        {% if wish.time.months %}
-            {{ wish.time.months|floatformat:"0"|intcomma }} months and 
+        {% if wish.time.years %}
+            {{ wish.time.years|floatformat:"0"|intcomma }} year{{ wish.time.years|pluralize }},
         {% endif %}
 
-        {{ wish.time.days|floatformat:"0" }} days to get a {{ wish.label }} 
+        {% if wish.time.months %}
+            {{ wish.time.months|floatformat:"0"|intcomma }} month{{ wish.time.months|pluralize }}, and 
+        {% endif %}
+
+        {{ wish.time.days|floatformat:"0" }} day{{ wish.time.days|pluralize }} to get a {{ wish.label }} 
         (${{ wish.amount_with_tax|floatformat:"0"|intcomma }})
         </a>
         </div>
