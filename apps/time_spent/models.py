@@ -95,7 +95,9 @@ class Wish(models.Model):
 
         years = floor(total / net.yearly())
         months = floor((total - (net.yearly() * years)) / net.monthly())
-        days = ceil((total - (net.monthly() * months)) / net.daily())
+        paid = (net.monthly() * months) + (net.yearly() * years)
+
+        days = ceil((total - paid) / net.daily())
 
         return {
             'years': years,
