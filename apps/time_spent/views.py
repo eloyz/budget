@@ -111,7 +111,7 @@ def net_income(request, month=0, year=0):
     total_time = Wish.total_time(request.user)
 
     total = {
-        'amount': amount,
+        'amount': amount * 1.0825,
         'years': 0,
         'months': 0,
         'days': 0,
