@@ -47,10 +47,13 @@
                         {{ t|floatformat:"0" }}
                         hour{{ t|pluralize }}
                     {% endif %}
-
                 {% empty %}
                     No time at all
                 {% endfor %}
+
+                {% if expense.percent %}
+                {{ expense.percent|floatformat:'0' }}%
+                {% endif %}
             </div>
         </div>
         {% endfor %}

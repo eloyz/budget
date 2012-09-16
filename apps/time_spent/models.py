@@ -43,23 +43,22 @@ class Expense(models.Model):
 
         return sum(expenses)
 
+    def percent(self):
+        return self.amount / Income.objects.get(creator=self.creator).amount * 100.0
+
 
 class NetIncome(object):
 
     def __init__(self, *args, **kwargs):
         self.creator = kwargs.get('creator')
 
-    def income(self):
-        return Income.objects.get(creator=self.creator).amount
-
-    def expense(self):
-        return Expense.total(self.creator)
-
     def daily(self):
         return self.yearly() / (52 * 7)  # 52wks 7days
 
     def monthly(self):
-        return self.income() - self.expense()
+        income = Income.objects.get(creator=self.creator).amount
+        expense = Expense.total(self.creator)
+        return income - expense
 
     def yearly(self):
         return self.monthly() * 12

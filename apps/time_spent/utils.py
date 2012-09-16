@@ -580,6 +580,7 @@ def expense_context(**kwargs):
             'time': expense_time(expense.amount, income.amount),
             'hours': hours,
             'days': days,
+            'percent': expense.percent(),
         }
 
     if request.method == "POST":
@@ -592,6 +593,7 @@ def expense_context(**kwargs):
 
         for expense_tuple in expense_tuples:
             pk, label, amount, color = expense_tuple[:4]
+            percent = 0
 
             if amount:
                 amount = float(amount)
@@ -611,10 +613,11 @@ def expense_context(**kwargs):
 
                 expense.dt = calendar_dt
                 expense.label = label
-                expense.amount = unicode(amount)
+                expense.amount = amount
                 expense.creator = user
                 expense.save()
 
+                percent = expense.percent()
                 pk = expense.pk
 
             expense_list.append({
@@ -625,6 +628,7 @@ def expense_context(**kwargs):
                 'time': expense_time(amount, income.amount),
                 "hours": safe_divide(amount, income_hourly),
                 "days": safe_divide(amount, income_daily),
+                'percent': percent,
             })
 
     return {
