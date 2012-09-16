@@ -632,7 +632,7 @@ def expense_context(**kwargs):
             })
 
     return {
-        'net_income': NetIncome(creator=request.user).monthly(),
+        'net_income': NetIncome(creator=request.user),
         'expenses': expense_list,
         'total_expense': get_total_expense(expenses),
     }

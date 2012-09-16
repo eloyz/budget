@@ -20,7 +20,8 @@
         <div class="back-link"><a href="{% url homepage %}">Home</a></div>
         <div class="expense">
             Total ${{ total_expense|floatformat:"0"|intcomma }}
-            (${{ net_income|floatformat:'0'|intcomma }} left)
+            (${{ net_income.monthly|floatformat:'0'|intcomma }} 
+            / {{ net_income.percent|floatformat:'0' }}% left)
         </div>
     </div>
 </div>
