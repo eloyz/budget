@@ -17,7 +17,7 @@
 
 <div class="awesome-bar">
     <div class="month-nav">
-        <div class="back-link"><a href="{% url homepage %}">Back</a></div>
+        <div class="back-link"><a href="{% url homepage %}">Home</a></div>
         <div class="expense">Total ${{ total_expense|floatformat:"0"|intcomma }}</div>
     </div>
 </div>
@@ -58,7 +58,7 @@
         </div>
         {% endfor %}
 
-        <p><input type="submit" value="Update Calendar &rarr;"></p>
+        <p><input type="submit" value="Save changes"></p>
     </form>
 </div>
 
