@@ -14,10 +14,11 @@
 <div class="awesome-bar">
     <div class="month-nav">
         <div class="back-link"><a href="{% url homepage %}">Back</a></div>
+        <div class="expense">{{ net_income.percent|floatformat:"0" }}% Winning</div>
     </div>
 </div>
 
-<p class="wishlist-msg">You have ${{ net_income|floatformat:"2"|intcomma }} a month to spend
+<p class="wishlist-msg">You have ${{ net_income.monthly|floatformat:"2"|intcomma }} a month to spend
 on your wishlist. <a href="{% url wish %}">Start wishing.</a></p>
 
     {% for wish in wish_list %}

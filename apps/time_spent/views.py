@@ -119,7 +119,7 @@ def net_income(request, month=0, year=0):
 
     return render_to_response(
         'net-income.html', {
-        'net_income': net_income.monthly(),
+        'net_income': net_income,
         'wish_list': wish_list,
         'total': total,
         'total_time': total_time,

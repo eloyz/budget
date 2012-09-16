@@ -63,6 +63,10 @@ class NetIncome(object):
     def yearly(self):
         return self.monthly() * 12
 
+    def percent(self):
+        return self.monthly() / \
+            Income.objects.get(creator=self.creator).amount * 100
+
 
 class Wish(models.Model):
     label = models.CharField(max_length=200)
