@@ -506,7 +506,7 @@ def expense_context(**kwargs):
     import calendar
     from datetime import datetime
     from itertools import cycle, count
-    from time_spent.models import Income, Expense
+    from time_spent.models import Income, Expense, NetIncome
     from time_spent.utils import EXPENSE_COLORS
 
     request = kwargs['request']
@@ -632,6 +632,7 @@ def expense_context(**kwargs):
             })
 
     return {
+        'net_income': NetIncome(creator=request.user).monthly(),
         'expenses': expense_list,
         'total_expense': get_total_expense(expenses),
     }

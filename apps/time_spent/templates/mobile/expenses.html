@@ -18,7 +18,10 @@
 <div class="awesome-bar">
     <div class="month-nav">
         <div class="back-link"><a href="{% url homepage %}">Home</a></div>
-        <div class="expense">Total ${{ total_expense|floatformat:"0"|intcomma }}</div>
+        <div class="expense">
+            Total ${{ total_expense|floatformat:"0"|intcomma }}
+            (${{ net_income|floatformat:'0'|intcomma }} left)
+        </div>
     </div>
 </div>
 
@@ -58,7 +61,10 @@
         </div>
         {% endfor %}
 
-        <p><input type="submit" value="Save changes"></p>
+        <p>
+            <input type="submit" value="Save changes">
+            <a href="{% url homepage %}">I'm done, let's go home</a>
+        </p>
     </form>
 </div>
 
