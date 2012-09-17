@@ -38,7 +38,7 @@
             <input class="pk" type="hidden" name="stock-item-pk" value="{{ expense.pk }}">
 
             <input class="label" type="text" name="stock-item-label" value="{{ expense.label }}">
-            $<input class="cost" type="text" size="7" name="stock-item-amount" value="{{ expense.amount|floatformat:"2" }}">
+            $<input class="cost" type="number" size="7" name="stock-item-amount" value="{{ expense.amount|floatformat:"2" }}">
             <div>
 
                 {% if expense.amount %}
