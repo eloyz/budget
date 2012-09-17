@@ -516,7 +516,7 @@ def expense_context(**kwargs):
 
     calendar.setfirstweekday(calendar.SUNDAY)
 
-    expenses = Expense.objects.filter(creator=user).order_by('pk')
+    expenses = Expense.objects.filter(creator=user).order_by('-amount')
 
     try:
         income = Income.objects.get(creator=user)
