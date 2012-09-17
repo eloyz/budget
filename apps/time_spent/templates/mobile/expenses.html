@@ -19,9 +19,9 @@
     <div class="month-nav">
         <div class="back-link"><a href="{% url homepage %}">Home</a></div>
         <div class="expense">
-            Total ${{ total_expense|floatformat:"0"|intcomma }}
-            (${{ net_income.monthly|floatformat:'0'|intcomma }} 
-            / {{ net_income.percent|floatformat:'0' }}% left)
+            ${{ net_income.monthly|floatformat:'0'|intcomma }} 
+             ({{ net_income.percent|floatformat:'0' }}%) left for your
+            <a href="{% url net-income %}">wish list</a>
         </div>
     </div>
 </div>
@@ -61,6 +61,23 @@
             </div>
         </div>
         {% endfor %}
+
+        <p>Total ${{ total_expense|floatformat:"0"|intcomma }} | 
+        {% for t in total_expense_time %}
+
+            {% if t and forloop.counter == 1 %}
+                {{ t|floatformat:"0" }}
+                day{{ t|pluralize }}
+            {% endif %}
+
+            {% if t and forloop.counter == 2 %}
+                {{ t|floatformat:"0" }}
+                hour{{ t|pluralize }}
+            {% endif %}
+        {% empty %}
+            No time at all
+        {% endfor %}
+        </p>
 
         <p>
             <input type="submit" value="Save changes">

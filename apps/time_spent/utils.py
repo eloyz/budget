@@ -565,6 +565,21 @@ def expense_context(**kwargs):
         income_hourly = income_yearly / (52 * 7 * 24)  # 52wks * 7days * 24hrs
         hours = safe_divide(expense, income_hourly)
 
+        # returns days and hours
+        return (math.floor(hours / 24), math.ceil(hours % 24))
+
+    def get_total_expense_time(total_expense, income):
+        """
+        Returns tuple of days and hours equal
+        to the total expense cost (all expenses combined).
+        """
+        import math
+
+        income_yearly = income * 12  # 12months
+        income_hourly = income_yearly / (52 * 7 * 24)  # 52wks * 7days * 24hrs
+        hours = safe_divide(total_expense, income_hourly)
+
+        # returns days and hours
         return (math.floor(hours / 24), math.ceil(hours % 24))
 
     for expense in expenses[:10]:
@@ -631,8 +646,12 @@ def expense_context(**kwargs):
                 'percent': percent,
             })
 
+    total_expense = get_total_expense(expenses)
+    total_expense_time = get_total_expense_time(total_expense, income.amount)
+
     return {
         'net_income': NetIncome(creator=request.user),
         'expenses': expense_list,
         'total_expense': get_total_expense(expenses),
+        'total_expense_time': total_expense_time,
     }
