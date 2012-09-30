@@ -59,7 +59,9 @@
                 {% endif %}
 
 
+                {% if expense.percent %}
                 {{ expense.percent|floatformat:'0' }}%
+                {% endif %}
 
             </div>
         </div>
