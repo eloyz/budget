@@ -67,7 +67,8 @@
         </div>
         {% endfor %}
 
-        <p>Total ${{ total_expense|floatformat:"0"|intcomma }} | 
+        <p>Total ${{ total_expense|floatformat:"0"|intcomma }}
+        {% if total_expense %} | {% endif %}
         {% for t in total_expense_time %}
 
             {% if t and forloop.counter == 1 %}
