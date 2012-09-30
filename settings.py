@@ -122,7 +122,7 @@ LOGIN_REDIRECT_URL = '/'
 ACCOUNT_ACTIVATION_DAYS = 7
 
 BUDGET_DEFAULTS = {
-    'income': 3000
+    'income': 2000
 }
 
 try:

@@ -127,7 +127,7 @@ def desktop_context(**kwargs):
     except:
         income = Income.objects.create(
             label=unicode(),
-            amount=3000,
+            amount=2000,
             creator=user,
         )
 
@@ -336,7 +336,7 @@ def mobile_context(**kwargs):
     except:
         income = Income.objects.create(
             label=unicode(),
-            amount=3000,
+            amount=2000,
             creator=user,
         )
 
@@ -523,7 +523,7 @@ def expense_context(**kwargs):
     except:
         income = Income.objects.create(
             label=unicode(),
-            amount=3000,
+            amount=2000,
             creator=user,
         )
 
