@@ -26,7 +26,7 @@ This service focuses on money as it relates to your time.
 * How much of your time is just spent surviving to the next month.
 * How much of your time is actually working towards the things you want out of this life?
 
-Find this project at [budget.eloyz.com][website].  No registration required, just start playing around.  Very much in its alpha stage.  Focusing mostly on the mobile experience at this time.
+Find this project at [budget.eloyz.com][website].  `No registration required`, just start playing around.  Very much in its `alpha stage`.  Focusing mostly on the `mobile experience` at this time.
 
 
 [website]: http://budget.eloyz.com
