@@ -64,8 +64,13 @@ class NetIncome(object):
         return self.monthly() * 12
 
     def percent(self):
-        return self.monthly() / \
-            Income.objects.get(creator=self.creator).amount * 100
+
+        income = Income.objects.get(creator=self.creator).amount * 100
+
+        if income <= 0:
+            return 0
+
+        return self.monthly() / income
 
 
 class Wish(models.Model):
