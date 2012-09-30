@@ -128,6 +128,38 @@ def net_income(request, month=0, year=0):
 
 
 @allow_lazy_user
+def wish_list(request, month=0, year=0):
+    """
+    Returns wish list page. This page lists out your
+    wishes, and the amount of time to afford those wishes.
+    """
+    from time_spent.models import NetIncome, Wish
+
+    net_income = NetIncome(creator=request.user)
+    wish_list = Wish.objects.filter(
+        creator=request.user).order_by('amount')
+
+    amount = Wish.total_amount(request.user)
+    total_time = Wish.total_time(request.user)
+
+    total = {
+        'amount': amount * 1.0825,
+        'years': 0,
+        'months': 0,
+        'days': 0,
+    }
+
+    return render_to_response(
+        'net-income.html', {
+        'net_income': net_income,
+        'wish_list': wish_list,
+        'total': total,
+        'total_time': total_time,
+        }, context_instance=RequestContext(request)
+    )
+
+
+@allow_lazy_user
 def wish(request):
     from time_spent.forms import WishForm
 

@@ -1,0 +1,63 @@
+{% load humanize %}
+<!doctype>
+
+<html>
+<head>
+    <title>Net Income</title>
+    <link rel="stylesheet" href="{{ MEDIA_URL }}styles/mobile/calendar.css">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+</head>
+
+<body>
+
+<div class="awesome-bar">
+    <div class="month-nav">
+        <div class="back-link"><a href="{% url homepage %}">Home</a></div>
+        <div class="expense">{{ net_income.percent|floatformat:"0" }}% Winning</div>
+    </div>
+</div>
+
+<p class="wishlist-msg">You have ${{ net_income.monthly|floatformat:"2"|intcomma }} a month to spend
+on your wishlist. <a href="{% url wish %}">Start wishing.</a></p>
+
+    {% for wish in wish_list %}
+        <div class="wishlist-msg">
+
+        <a href="{% url wish-change wish.pk %}">
+
+        {% if wish.time.years %}
+            {{ wish.time.years|floatformat:"0"|intcomma }} year{{ wish.time.years|pluralize }},
+        {% endif %}
+
+        {% if wish.time.months %}
+            {{ wish.time.months|floatformat:"0"|intcomma }} month{{ wish.time.months|pluralize }}, and 
+        {% endif %}
+
+        {{ wish.time.days|floatformat:"0" }} day{{ wish.time.days|pluralize }} to get a {{ wish.label }} 
+        (${{ wish.amount_with_tax|floatformat:"0"|intcomma }})
+        </a>
+        </div>
+    {% endfor %}
+
+    <div class="hr"></div>
+
+    <p class="wishlist-msg">
+        Your wish list total comes to ${{ total.amount|floatformat:"0"|intcomma }}.</p>
+
+    <p class="wishlist-msg">
+        All your wishes can come true in 
+
+        {% if total_time.years %}
+            {{ total_time.years|floatformat:"0" }} year{{ total_time.years|pluralize }}, 
+        {% endif %}
+
+        {% if total_time.months %}
+            {{ total_time.months|floatformat:"0" }} month{{ total_time.months|pluralize }}, and 
+        {% endif %}
+
+        {{ total_time.days|floatformat:"0" }} day{{ total_time.days|pluralize }}.</p>
+
+</body>
+
+</html>
