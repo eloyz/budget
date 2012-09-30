@@ -101,10 +101,16 @@ class Wish(models.Model):
         net = NetIncome(creator=creator)
         total = cls.total_amount(creator) * 1.0825  # tax
 
+        if not net.monthly():
+            return {
+                'years': 0,
+                'months': 0,
+                'days': 0,
+            }
+
         years = floor(total / net.yearly())
         months = floor((total - (net.yearly() * years)) / net.monthly())
         paid = (net.monthly() * months) + (net.yearly() * years)
-
         days = ceil((total - paid) / net.daily())
 
         return {
