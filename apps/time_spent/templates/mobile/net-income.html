@@ -40,24 +40,6 @@ on your wishlist. <a href="{% url wish %}">Start wishing.</a></p>
         </div>
     {% endfor %}
 
-    <div class="hr"></div>
-
-    <p class="wishlist-msg">
-        Your wish list total comes to ${{ total.amount|floatformat:"0"|intcomma }}.</p>
-
-    <p class="wishlist-msg">
-        All your wishes can come true in 
-
-        {% if total_time.years %}
-            {{ total_time.years|floatformat:"0" }} year{{ total_time.years|pluralize }}, 
-        {% endif %}
-
-        {% if total_time.months %}
-            {{ total_time.months|floatformat:"0" }} month{{ total_time.months|pluralize }}, and 
-        {% endif %}
-
-        {{ total_time.days|floatformat:"0" }} day{{ total_time.days|pluralize }}.</p>
-
 </body>
 
 </html>
