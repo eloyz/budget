@@ -2,34 +2,31 @@
 
 ## The Goal
 
-To provide insight into where our time and money is spent.  No longer will we wonder what we are working for; with this application -- it will be obvious.
+Provide insight on where your money is being spent.  See your budget on a calendar with the amount of hours required to pay for the necessities and luxiries of your life.
+
+See a break down of your budget via monthly calendar.  Rediscover how many hours are spent a work-week to pay the your mortgage/rent, bills, etc …
+
+See how much you make, spend, and can save on an hourly, daily, monthly, and yearly basis.
+
+Find out how long it will take you to get that item you're wishing for and clearly see what small savings here and there can do to to your wish list timeline.
 
 ## The Rules
-Enter your income, expenses, and time at work.  We will take care of the rest.  We will provide useable visuals that will make your time budget and money budget more obvious.
+Enter your income, expenses, and time at work.  We take care of the rest.  We provide useable visuals that will make your time budget and money budget too obvious.
 
-We have a high focus on security. You only provide as much personal information as you're comfortable with. We work hard to **not** require personal information.  All we ask for is an email address and password.  This gives us enough information to securely store your work and keep you notified.
+We work hard to require as little information as possible.  Get started without ever making an account or registering your name.
+
+If you'd like keep up with your budget from multiple devices, your phone, and desktop we do require some credentials (email & password).  We have to identify your progress somehow.  :/
 
 ## The Reason
-We all have trouble really understanding where our paycheck goes at the end of the month.  I wanted a tool that would make it obvious.  A tool that anyone could use.  This application focuses on money as it relates to your time.
+It's not yet clear enough where our paycheck goes at the end of the month.  I want a tool that makes it obvious, a tool that anyone can use.
 
+This service focuses on money as it relates to your time.
 
 ## Thoughts
-* How much of your time is spent surviving?
-* How much of your time is spent profiting?
+* How much of your time is just spent surviving to the next month.
+* How much of your time is actually working towards the things you want out of this life?
+
+Find this project at [budget.eloyz.com][website].  No registration required, just start playing around.  Very much in its alpha stage.  Focusing mostly on the mobile experience at this time.
 
 
-Monthly income
-Monthly expense
-
-Monthly income days
-Monthly income hours
-
-Monthly profit
-Monthly profit days
-Monthly profit hours
-
-
-Expense: $2560 (166.42 hrs) 
-Profit: $40 (2.58 hrs)
-
-Percentage of hours spent working in a month?
+[website]: http://budget.eloyz.com
