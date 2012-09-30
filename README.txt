@@ -1,23 +1,19 @@
-Budget Calendar Project
-=======================
+# Budget Calendar Project
 
-The Goal
------------------------
+## The Goal
+
 To provide insight into where our time and money is spent.  No longer will we wonder what we are working for; with this application -- it will be obvious.
 
-The Rules
------------------------
+## The Rules
 Enter your income, expenses, and time at work.  We will take care of the rest.  We will provide useable visuals that will make your time budget and money budget more obvious.
 
 We have a high focus on security. You only provide as much personal information as you're comfortable with. We work hard to **not** require personal information.  All we ask for is an email address and password.  This gives us enough information to securely store your work and keep you notified.
 
-The Reason
------------------------
+## The Reason
 We all have trouble really understanding where our paycheck goes at the end of the month.  I wanted a tool that would make it obvious.  A tool that anyone could use.  This application focuses on money as it relates to your time.
 
 
-Thoughts
-------------------------
+## Thoughts
 * How much of your time is spent surviving?
 * How much of your time is spent profiting?
 
