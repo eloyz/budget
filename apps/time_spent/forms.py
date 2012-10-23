@@ -20,3 +20,13 @@ class WishForm(forms.ModelForm):
             'label',
             'amount',
         )
+
+
+class QuickExpenseForm(forms.Form):
+    """
+    This form takes has one field called
+    total_expense.  We take the total_expense
+    and divide it out into several expense items.
+    """
+
+    total_expense = forms.FloatField()

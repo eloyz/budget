@@ -5,6 +5,8 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.core.urlresolvers import reverse
 from lazysignup.decorators import allow_lazy_user
 
+from time_spent.forms import QuickExpenseForm
+
 # create method that returns context
 # put context together with template
 # return result
@@ -103,9 +105,37 @@ def expenses_quick_start(request):
     start from scratch.
     """
 
+    if request.method == 'POST':
+        form = QuickExpenseForm(request.POST)
+        if form.is_valid():
+            total_expense = form.cleaned_data['total_expense']
+
+            print 'total_expense', total_expense
+            # TODO: divide total_expense into typical budget
+
+            # http://www.gatherlittlebylittle.com/2008/02/dave-ramseys-gazelle-budget/
+            expenses_with_percent = {
+                'Home': 24,
+                'Utils': 5,
+                'Food': 15,
+                'Savings': 10,
+                'Transportation': 10,
+                'Clothing': 6,
+                'Medical/Health': 5,
+                'Personal': 10,
+                'Entertainment': 5,
+                'Debt': 10,
+            }
+
+            print 'expense_percent', sum(expenses_with_percent.values())
+
+    else:  # not post
+        form = QuickExpenseForm()
+
     return render_to_response(
-        'expenses-quick-start.html',
-        {}, context_instance=RequestContext(request)
+        'expenses-quick-start.html', {
+        'form': form,
+        }, context_instance=RequestContext(request)
     )
 
 
