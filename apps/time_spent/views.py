@@ -95,6 +95,21 @@ def expenses(request, month=0, year=0):
 
 
 @allow_lazy_user
+def expenses_quick_start(request):
+    """
+    Shows you a form that allows you type in your total expense
+    for the month and we break it down to common monthly items
+    in a budget, allowing you to edit your expenses rather than
+    start from scratch.
+    """
+
+    return render_to_response(
+        'expenses-quick-start.html',
+        {}, context_instance=RequestContext(request)
+    )
+
+
+@allow_lazy_user
 def net_income(request, month=0, year=0):
     """
     We're building the response and then sending it via this view.

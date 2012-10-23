@@ -18,11 +18,19 @@
 <div class="awesome-bar">
     <div class="month-nav">
         <div class="back-link"><a href="{% url homepage %}">Home</a></div>
+
+        {% if not total_expense %}
+        <div class="expense">
+            <a href="{% url expenses-quick-start %}">
+                Example expenses</a>
+        </div>
+        {% else %}
         <div class="expense">
             ${{ net_income.monthly|floatformat:'0'|intcomma }} 
              ({{ net_income.percent|floatformat:'0' }}%) left for your
             <a href="{% url net-income %}">wish list</a>
         </div>
+        {% endif %}
     </div>
 </div>
 
