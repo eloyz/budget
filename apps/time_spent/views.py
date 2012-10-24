@@ -3,8 +3,9 @@ from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
 from django.core.urlresolvers import reverse
+from datetime import datetime
 from lazysignup.decorators import allow_lazy_user
-
+from time_spent.models import Expense
 from time_spent.forms import QuickExpenseForm
 
 # create method that returns context
@@ -110,24 +111,34 @@ def expenses_quick_start(request):
         if form.is_valid():
             total_expense = form.cleaned_data['total_expense']
 
-            print 'total_expense', total_expense
-            # TODO: divide total_expense into typical budget
-
+            # budget reference
             # http://www.gatherlittlebylittle.com/2008/02/dave-ramseys-gazelle-budget/
             expenses_with_percent = {
-                'Home': 24,
+                'Home': 25,
                 'Utils': 5,
                 'Food': 15,
                 'Savings': 10,
                 'Transportation': 10,
-                'Clothing': 6,
+                'Clothing': 5,
                 'Medical/Health': 5,
                 'Personal': 10,
                 'Entertainment': 5,
                 'Debt': 10,
             }
 
-            print 'expense_percent', sum(expenses_with_percent.values())
+            # clearing all previous expenses
+            request.user.expense_set.all().delete()
+
+            for expense_label, expense_percent in expenses_with_percent.items():
+                # 10 db inserts, eek
+                Expense.objects.create(
+                    label=expense_label,
+                    amount=total_expense * (expense_percent * .01),
+                    creator=request.user,
+                    dt=datetime.now(),
+                )
+
+            return HttpResponseRedirect(reverse('expenses'))
 
     else:  # not post
         form = QuickExpenseForm()
