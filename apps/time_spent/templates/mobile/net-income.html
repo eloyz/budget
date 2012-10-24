@@ -18,27 +18,31 @@
     </div>
 </div>
 
-<p class="wishlist-msg">You have ${{ net_income.monthly|floatformat:"2"|intcomma }} a month to spend
-on your wishlist. <a href="{% url wish %}">Start wishing.</a></p>
+{% if net_income.is_positive %}
+    <p class="wishlist-msg">You have ${{ net_income.monthly|floatformat:"2"|intcomma }} a month to spend on your wishlist. <a href="{% url wish %}">Start wishing.</a></p>
+{% else %}
+    <p class="wishlist-msg">You is broke.</p>
+    <p class="wishlist-msg">Consider getting more money or consider purchasing less stuff.</p>
+{% endif %}
 
-    {% for wish in wish_list %}
-        <div class="wishlist-msg">
+{% for wish in wish_list %}
+    <div class="wishlist-msg">
 
-        <a href="{% url wish-change wish.pk %}">
+    <a href="{% url wish-change wish.pk %}">
 
-        {% if wish.time.years %}
-            {{ wish.time.years|floatformat:"0"|intcomma }} year{{ wish.time.years|pluralize }},
-        {% endif %}
+    {% if wish.time.years %}
+        {{ wish.time.years|floatformat:"0"|intcomma }} year{{ wish.time.years|pluralize }},
+    {% endif %}
 
-        {% if wish.time.months %}
-            {{ wish.time.months|floatformat:"0"|intcomma }} month{{ wish.time.months|pluralize }}, and 
-        {% endif %}
+    {% if wish.time.months %}
+        {{ wish.time.months|floatformat:"0"|intcomma }} month{{ wish.time.months|pluralize }}, and 
+    {% endif %}
 
-        {{ wish.time.days|floatformat:"0" }} day{{ wish.time.days|pluralize }} to get a {{ wish.label }} 
-        (${{ wish.amount_with_tax|floatformat:"0"|intcomma }})
-        </a>
-        </div>
-    {% endfor %}
+    {{ wish.time.days|floatformat:"0" }} day{{ wish.time.days|pluralize }} to get a {{ wish.label }} 
+    (${{ wish.amount_with_tax|floatformat:"0"|intcomma }})
+    </a>
+    </div>
+{% endfor %}
 
 </body>
 
