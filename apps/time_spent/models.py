@@ -74,6 +74,13 @@ class NetIncome(object):
 
         return self.monthly() / income
 
+    def is_positive(self):
+        """
+        Returns a boolean value of whether your monthly
+        income is negative or positive.
+        """
+        return self.monthly() > 0
+
 
 class Wish(models.Model):
     label = models.CharField(max_length=200)
