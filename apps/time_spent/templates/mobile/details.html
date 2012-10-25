@@ -63,17 +63,6 @@
                 <span class="yearly">Yearly ${{ net_yearly|floatformat:"0"|intcomma }}</span>
             </div>
         </div>
-        <div class="item-wrap wish-list">
-            <div class="label">Wish List</div>
-            <div class="amount">
-                <a href="{% url wish-list %}">&#36;{{ net_monthly|floatformat:"0"|intcomma }}</a>
-            </div>
-            <div class="hourly daily yearly">
-                <span class="hourly">Hourly ${{ net_hourly|floatformat:"2" }}</span>
-                <span class="daily">Daily ${{ net_daily|floatformat:"2" }}</span>
-                <span class="yearly">Yearly ${{ net_yearly|floatformat:"0"|intcomma }}</span>
-            </div>
-        </div>
 </div>
 
 </body>
