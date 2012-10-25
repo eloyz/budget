@@ -28,6 +28,8 @@
                 <div class="expense">
                     ${{ net_income.monthly|floatformat:'0'|intcomma }} left for your <a href="{% url net-income %}">wish list</a>
                 </div>
+            {% elif net_income.is_zero %}
+                <div class="expense">You're living paycheck to paycheck.</div>
             {% else %}
                 <div class="expense">
                     You're losing {{ net_income.monthly|absolute|floatformat:'0'|intcomma }} a month
