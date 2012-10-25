@@ -28,13 +28,11 @@
 
             {% if net_income.is_positive %}
                 <div class="expense">
-                    ${{ net_income.monthly|floatformat:'0'|intcomma }} 
-                     ({{ net_income.percent|floatformat:'0' }}%) left for your
-                    <a href="{% url net-income %}">wish list</a>
+                    ${{ net_income.monthly|floatformat:'0'|intcomma }} left for your <a href="{% url net-income %}">wish list</a>
                 </div>
             {% else %}
                 <div class="expense">
-                    You're losing {{ net_income.monthly|absolute|floatformat:'0'|intcomma }} a month.
+                    You're losing {{ net_income.monthly|absolute|floatformat:'0'|intcomma }} a month
                 </div>
             {% endif %}
 
