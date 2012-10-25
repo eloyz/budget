@@ -1,3 +1,4 @@
+import math
 import calendar
 from datetime import datetime
 from django import template
@@ -58,3 +59,11 @@ def today_class(day):
         return "today"
     else:
         return ""
+
+
+@register.filter
+def absolute(number):
+    """
+    Returns absolute value of float
+    """
+    return math.fabs(number)
