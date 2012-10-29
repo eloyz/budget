@@ -67,12 +67,12 @@ class NetIncome(object):
         """
         Percent of monthly income is net income
         """
-        income = Income.objects.get(creator=self.creator).amount * 100
+        income = Income.objects.get(creator=self.creator).amount
 
         if income <= 0:
             return 0
 
-        return self.monthly() / income
+        return self.monthly() / income * 100
 
     def is_positive(self):
         """
