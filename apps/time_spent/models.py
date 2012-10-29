@@ -112,6 +112,10 @@ class Wish(models.Model):
 
     @classmethod
     def total_time(cls, creator):
+        """
+        Returns the number of years it would take
+        to purchase on wish list items for creator.
+        """
         from math import ceil, floor
 
         net = NetIncome(creator=creator)
@@ -136,9 +140,18 @@ class Wish(models.Model):
         }
 
     def amount_with_tax(self):
+        """
+        Returns the amount for the wish list item
+        once tax is included.
+        """
         return self.amount * 1.0825
 
     def time(self):
+        """
+        Returns the amount of time it would take to purchase
+        this wish list item.  Returns dictionary with keys
+        (e.g. years, months, days)
+        """
         from math import ceil, floor
 
         years = self.years()
@@ -154,13 +167,25 @@ class Wish(models.Model):
         }
 
     def years(self):
+        """
+        Returns the number of years it would take to pay
+        for this wish list item.
+        """
         from math import floor
         return floor(self.amount_with_tax() / self.net_income.yearly())
 
     def months(self):
+        """
+        Returns the number of months it would take to pay
+        for this wish list item.
+        """
         from math import floor
         return floor(self.amount_with_tax() / self.net_income.monthly())
 
     def days(self):
+        """
+        Returns the number of days it would take to pay
+        for this wish list item.
+        """
         from math import floor
         return floor(self.amount_with_tax() / self.net_income.daily())
