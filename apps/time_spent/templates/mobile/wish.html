@@ -13,15 +13,33 @@
 
 <div class="awesome-bar">
     <div class="month-nav">
-        <div class="back-link"><a href="{% url homepage %}">Back</a></div>
+        <div class="back-link"><a href="{% url net-income %}">Net Income</a></div>
     </div>
 </div>
 
 <form action="{% url wish %}" method="post">
     {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Make wish">
+    <div class="item-wrap income no-border">
+        <div class="label">Make wish</div>
+        <input type="text" name="label" title="Wish name"
+            value="{{ form.label.value }}" />
+        <input type="number" name="amount" title="Amount"
+            value="{{ form.amount.value }}" />
+    </div>
+    <div class="right-align">
+        <input type="submit" value="Save wish"></div>
+
 </form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="{{ MEDIA_URL }}js/jquery.hint.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('input[title!=""]').hint();
+    });
+</script>
+
 
 </body>
 

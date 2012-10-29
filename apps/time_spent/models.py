@@ -90,7 +90,7 @@ class NetIncome(object):
 
 
 class Wish(models.Model):
-    label = models.CharField(max_length=200)
+    label = models.CharField(max_length=200, default=u'')
     amount = models.FloatField()
     creator = models.ForeignKey(User)
 
