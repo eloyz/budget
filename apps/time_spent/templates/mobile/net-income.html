@@ -48,6 +48,22 @@
     </div>
 {% endfor %}
 
+    <div class="wishlist-msg"><hr /></div>
+
+{% if total_time.total %}
+    <div class="wishlist-msg">
+    {% if total_time.years %}
+        {{ total_time.years|floatformat:"0"|intcomma }} year{{ total_time.years|pluralize }},
+    {% endif %}
+
+    {% if total_time.months %}
+        {{ total_time.months|floatformat:"0"|intcomma }} month{{ total_time.months|pluralize }}, and
+    {% endif %}
+
+    {{ total_time.days|floatformat:"0" }} day{{ total_time.days|pluralize }} to reach a grand total of ${{ total_time.total|floatformat:"0"|intcomma }}
+    </div>
+{% endif %}
+
 </body>
 
 </html>

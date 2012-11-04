@@ -119,14 +119,14 @@ class Wish(models.Model):
     amount = models.FloatField()
     creator = models.ForeignKey(User)
 
-    def __unicode__(self):
-        return '%s %s' % (self.label, self.amount)
-
     def __init__(self, *args, **kwargs):
         super(Wish, self).__init__(*args, **kwargs)
 
         if hasattr(self, 'creator'):
             self.net_income = NetIncome(creator=self.creator)
+
+    def __unicode__(self):
+        return '%s %s' % (self.label, self.amount)
 
     @classmethod
     def total_amount(cls, creator):
@@ -138,13 +138,13 @@ class Wish(models.Model):
     @classmethod
     def total_time(cls, creator):
         """
-        Returns the number of years it would take
-        to purchase on wish list items for creator.
+        Returns the amount of time it would
+        take the end-user to save for their wishlist.
         """
         from math import ceil, floor
 
         net = NetIncome(creator=creator)
-        total = cls.total_amount(creator) * 1.0825  # tax
+        wishlist_total = cls.total_amount(creator) * 1.0825  # tax
 
         if not net.monthly():
             return {
@@ -153,12 +153,19 @@ class Wish(models.Model):
                 'days': 0,
             }
 
-        years = floor(total / net.yearly())
-        months = floor((total - (net.yearly() * years)) / net.monthly())
-        paid = (net.monthly() * months) + (net.yearly() * years)
-        days = ceil((total - paid) / net.daily())
+        years = floor(wishlist_total / net.yearly())
+        months = floor(wishlist_total / net.monthly()) % 12
+
+        # basic accounting
+        paid = sum([net.yearly() * years, net.monthly() * months])
+        balance = wishlist_total - paid
+
+        # months aren't divided evenly [e.g. 29-31 days in month]
+        # more accurate estimation
+        days = ceil(balance / net.daily())
 
         return {
+            'total': wishlist_total,
             'years': years,
             'months': months,
             'days': days,
