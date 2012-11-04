@@ -24,6 +24,21 @@
     <input type="submit" value="Change wish"> or
     <a href="{% url wish-remove wish.pk %}">Remove wish</a>
 </form>
+
+<hr />
+
+{% if wish.amount_with_tax %}
+    {% if wish.time.years %}
+        {{ wish.time.years|floatformat:"0"|intcomma }} year{{ wish.time.years|pluralize }},
+    {% endif %}
+
+    {% if wish.time.months %}
+        {{ wish.time.months|floatformat:"0"|intcomma }} month{{ wish.time.months|pluralize }}, and
+    {% endif %}
+
+    {{ wish.time.days|floatformat:"0" }} day{{ wish.time.days|pluralize }} to reach a grand total of ${{ wish.amount_with_tax|floatformat:"0"|intcomma }}.
+{% endif %}
+
 </div>
 
 </body>
