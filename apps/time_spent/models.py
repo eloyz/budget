@@ -16,12 +16,6 @@ class Income(models.Model):
     def per_hour(self, num_workdays):
         return self.per_day(num_workdays) / 8.0  # self.hours
 
-    # def hours_per_day(self):
-    #     return self.hours / 7
-
-    # def hours_per_month(self, month=None):
-    #     return self.hours_per_day() * (month.days() or 30)
-
     def __unicode__(self):
         return '%s %s' % (self.label, self.amount)
 
