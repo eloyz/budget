@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+TAX_RATE = 1.0825
+
 
 class Income(models.Model):
     """Income"""
@@ -138,7 +140,7 @@ class Wish(models.Model):
         from math import ceil, floor
 
         net = NetIncome(creator=creator)
-        wishlist_total = cls.total_amount(creator) * 1.0825  # tax
+        wishlist_total = cls.total_amount(creator) * TAX_RATE  # tax
 
         if not net.monthly():
             return {
@@ -170,12 +172,12 @@ class Wish(models.Model):
         Returns the amount for the wish list item
         once tax is included.
         """
-        return self.amount * 1.0825
+        return self.amount * TAX_RATE
 
     def time(self):
         """
         Returns the amount of time it would take to purchase
-        this wish list item.  Returns dictionary with keys
+        this wishlist item.  Returns dictionary with keys
         (e.g. years, months, days)
         """
         from math import ceil, floor
