@@ -50,18 +50,43 @@ class Expense(models.Model):
 class NetIncome(object):
 
     def __init__(self, *args, **kwargs):
+        """
+        Returns a net income object, calculates
+        net income filterd by creator.
+        """
         self.creator = kwargs.get('creator')
 
+    def hourly(self):
+        """
+        Returns the amount of income made hourly.
+        """
+        return self.daily() / 24
+
     def daily(self):
+        """
+        Returns the amount of income made daily.
+        """
         return self.yearly() / (52 * 7)  # 52wks 7days
 
     def monthly(self):
+        """
+        Returns the amount of income made monthly.
+        """
         income = Income.objects.get(creator=self.creator).amount
         expense = Expense.total(self.creator)
         return income - expense
 
     def yearly(self):
+        """
+        Returns the amount of income made yearly.
+        """
         return self.monthly() * 12
+
+    def on_date(self, dt):
+        """
+        Returns the amount of income you would have
+        made by the specified date.
+        """
 
     def percent(self):
         """
