@@ -20,7 +20,13 @@
 </div>
 
 {% if net_income.is_positive %}
-    <p class="wishlist-msg">You have ${{ net_income.monthly|floatformat:"2"|intcomma }} a month to spend on your wishlist. <a href="{% url wish %}">Start wishing.</a></p>
+
+    {% if wish_list %}
+        <p class="wishlist-msg">You have ${{ net_income.monthly|floatformat:"2"|intcomma }} a month to spend on your wishlist. <a href="{% url wish %}">More wishes!</a></p>
+    {% else %}
+        <p class="wishlist-msg">You have ${{ net_income.monthly|floatformat:"2"|intcomma }} a month to spend on your wishlist. <a href="{% url wish %}">Start wishing.</a></p>
+    {% endif %}
+
 {% elif net_income.is_zero %}
     <p class="wishlist-msg">You're living paycheck to paycheck.</p>
     <p class="wishlist-msg">Consider getting more money or consider purchasing less stuff.</p>
