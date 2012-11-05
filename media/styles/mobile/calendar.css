@@ -208,6 +208,10 @@ body {
     line-height: 24px;
 }
 
+.wish-price.wish-label a {
+    text-decoration: none;
+}
+
 .wish-time {
     margin-bottom: 10px;
 }
