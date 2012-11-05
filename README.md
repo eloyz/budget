@@ -2,7 +2,7 @@
 
 ## The Goal
 
-Provide insight on where your money is being spent.  See your budget on a calendar with the amount of hours required to pay for the necessities and luxiries of your life.
+Provide insight on where your money is being spent.  See your budget on a calendar with the amount of hours required to pay for the necessities and luxuries of your life.
 
 See a break down of your budget via monthly calendar.  Rediscover how many hours are spent a work-week to pay the your mortgage/rent, bills, etc …
 
