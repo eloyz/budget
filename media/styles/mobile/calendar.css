@@ -203,3 +203,11 @@ body {
     background-color: #82a6ff;
 }
 
+.wish-price.wish-label {
+    font-size: 24px;
+    line-height: 24px;
+}
+
+.wish-time {
+    margin-bottom: 10px;
+}

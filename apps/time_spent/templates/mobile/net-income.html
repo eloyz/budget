@@ -29,11 +29,16 @@
     <p class="wishlist-msg">Consider getting more money or consider purchasing less stuff.</p>
 {% endif %}
 
+<div class="wishlist-msg">
 {% for wish in wish_list %}
-    <div class="wishlist-msg">
 
-    <a href="{% url wish-change wish.pk %}">
+    <div class="wish-price wish-label">
+        <a href="{% url wish-change wish.pk %}">
+        ${{ wish.amount_with_tax|floatformat:"0"|intcomma }} 
+        {{ wish.label }}</a>
+    </div>
 
+    <div class="wish-time">
     {% if wish.time.years %}
         {{ wish.time.years|floatformat:"0"|intcomma }} year{{ wish.time.years|pluralize }},
     {% endif %}
@@ -42,11 +47,10 @@
         {{ wish.time.months|floatformat:"0"|intcomma }} month{{ wish.time.months|pluralize }}, and 
     {% endif %}
 
-    {{ wish.time.days|floatformat:"0" }} day{{ wish.time.days|pluralize }} to get a {{ wish.label }} 
-    (${{ wish.amount_with_tax|floatformat:"0"|intcomma }})
-    </a>
+    {{ wish.time.days|floatformat:"0" }} day{{ wish.time.days|pluralize }}
     </div>
 {% endfor %}
+</div>
 
 <div class="wishlist-msg"><hr /></div>
 
